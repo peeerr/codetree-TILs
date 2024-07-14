@@ -1,8 +1,7 @@
 def f(i):
     if i == -1:
         return 0
-    num = f(i - 1)
-    return arr[i] if arr[i] > num else num
+    return max(f(i - 1), arr[i])
 
 n = int(input())
 arr = list(map(int, input().split()))
