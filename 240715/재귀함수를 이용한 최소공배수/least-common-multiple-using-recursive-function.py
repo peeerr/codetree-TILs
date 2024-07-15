@@ -9,4 +9,4 @@ def f(i, j, k):
 n = int(input())
 arr = list(map(int, input().split()))
 
-print(f(0, n, min(arr)))
+print(f(0, n, max(arr)))
