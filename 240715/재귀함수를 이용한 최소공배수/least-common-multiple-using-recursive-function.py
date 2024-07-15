@@ -4,7 +4,7 @@ def f(i, j, k):
     if k % arr[i] == 0:
         return f(i + 1, j, k)
     else:
-        return f(0, j, k + 1)
+        return f(0, j, k + max(arr))
 
 n = int(input())
 arr = list(map(int, input().split()))
