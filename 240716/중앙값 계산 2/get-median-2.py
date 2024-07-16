@@ -2,6 +2,5 @@ n = int(input())
 arr = list(map(int, input().split()))
 
 for i in range(len(arr)):
-    length = i + 1
-    if length % 2 == 1:
-        print(sorted(arr[:length])[length // 2], end=' ')
+    if i % 2 == 0:
+        print(sorted(arr[:i + 1])[i // 2], end=' ')
