@@ -6,7 +6,7 @@ res = []
 for x in s:
     cnt = 0
     for i in range(len(T)):
-        if x[i] == T[i]:
+        if x[i % len(x)] == T[i]:
             cnt += 1
     if cnt == len(T):
         res.append(x)
