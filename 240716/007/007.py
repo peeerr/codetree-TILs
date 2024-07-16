@@ -1,11 +1,11 @@
-class Secret:
-    def __init__(self, code, place, time):
-        self.code = code
-        self.place = place
+class Spy:
+    def __init__(self, secret_code, meeting_point, time):
+        self.secret_code = secret_code
+        self.meeting_point = meeting_point
         self.time = time
 
-secret = Secret(*input().split())
+spy = Spy(*input().split())
 
-print(f"secret code : {secret.code}")
-print(f"meeting point : {secret.place}")
-print(f"time : {secret.time}")
+print(f"secret code : {spy.secret_code}")
+print(f"meeting point : {spy.meeting_point}")
+print(f"time : {spy.time}")
