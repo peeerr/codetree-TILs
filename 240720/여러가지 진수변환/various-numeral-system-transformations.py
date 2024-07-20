@@ -1,10 +1,13 @@
 n, b = map(int, input().split())
 
 res = ''
-while n != 1:
+while True:
     res += str(n % b)
     n //= b
     if n == 1:
         res += str(1)
+        break
+    elif n == 0:
+        break
 
-print(res[::-1] if n != 0 else 0)
+print(res[::-1])
