@@ -5,4 +5,4 @@ while n != 0:
     res += str(n % 2)
     n //= 2
 
-print(res[::-1])
+print(res[::-1] if res != '' else 0)
