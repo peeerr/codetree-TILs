@@ -7,4 +7,4 @@ while n != 1:
     if n == 1:
         res += str(1)
 
-print(res[::-1])
+print(res[::-1] if n != 0 else 0)
