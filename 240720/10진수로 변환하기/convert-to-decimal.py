@@ -1,7 +1,7 @@
 n = list(map(int, list(input())))
 
 res = 0
-for cnt, x in enumerate(n[::-1]):
-    res += x * (2 ** cnt)
+for x in n:
+    res = res * 2 + x
 
 print(res)
