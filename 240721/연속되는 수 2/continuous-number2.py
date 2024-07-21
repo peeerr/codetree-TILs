@@ -14,4 +14,4 @@ for i in range(len(arr) - 1):
     if i == len(arr) - 2 and arr[len(arr) - 1] != arr[len(arr) - 2]:
         res.append((arr[i + 1], 1))
 
-print(max(res, key=lambda x : x[1])[1])
+print(max(res, key=lambda x : x[1])[1] if len(res) != 0 else 1)
