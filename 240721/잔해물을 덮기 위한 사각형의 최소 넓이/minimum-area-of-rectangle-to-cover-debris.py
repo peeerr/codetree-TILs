@@ -10,29 +10,22 @@ for n, rect in enumerate(rects, start=1):
             grid[i][j] = n
 
 x1, y1, x2, y2 = rects[0]
-res_x = x1
-res_y = []
 
+x, y = 0, 0
+cnt_x, cnt_y = 0, 0
 for i in range(x1, x2):
-    if 1 in grid[i] and i != x1:
-        res_x += 1
-    tmp = y1
-    for j in range(y1 + 1, y2):
-        if (1 in grid[i] and grid[i][j] == 1) or (1 in grid[i] and grid[i][j] == 2):
-            tmp += 1
-    res_y.append(tmp)
+    if 1 in grid[i] and cnt_x == 0:
+        x1 = i
+        cnt_x += 1
+    for j in range(y1, y2):
+        if grid[i][j] == 1 and cnt_y == 0:
+            y1 = j
+            cnt_y += 1
+        if grid[i][j] == 1:
+            x, y = i, j
 
-if len(res_y) == 0:
-    res_y = y1
-else:
-    res_y = max(res_y)
-    
-if x1 == res_x and y1 == res_y:
-    print(0)
-else:
-    res = 0
-    for i in range(x1, res_x + 1):
-        for j in range(y1, res_y + 1):
-            res += 1
-
-    print(res)
+res = 0
+for i in range(x1, x + 1):
+    for j in range(y1, y + 1):
+        res += 1
+print(res)
