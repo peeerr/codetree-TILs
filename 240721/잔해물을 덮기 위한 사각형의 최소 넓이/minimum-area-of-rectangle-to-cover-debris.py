@@ -27,9 +27,7 @@ if len(res_y) == 0:
 else:
     res_y = max(res_y)
     
-if x1 == res_x:
-    print(0)
-elif y1 == res_y:
+if x1 == res_x and y1 == res_y:
     print(0)
 else:
     res = 0
