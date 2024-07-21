@@ -1,6 +1,6 @@
 n = int(input())
 
-grid = [['', 0] for _ in range(200001)]
+grid = [['', [0, 0]] for _ in range(200001)]
 
 start_pos = 100000
 color = ''
@@ -18,11 +18,15 @@ for _ in range(n):
 
     for i in range(start_pos, (start_pos + (instructions[0] * direction)), direction):
         if grid[i][0] != color and grid[i][0] != 'G':
-            grid[i][1] += 1
             grid[i][0] = color
 
-        if grid[i][1] == 4:
-            grid[i][1] = -1
+        if color == 'W':
+            grid[i][1][0] += 1
+        else:
+            grid[i][1][1] += 1
+
+        if grid[i][1][0] >= 2 and grid[i][1][1] >= 2:
+            grid[i][1][0] = float('-inf')
             grid[i][0] = 'G'
 
         start_pos = i
