@@ -22,9 +22,14 @@ for i in range(x1 + 1, x2):
                 tmp += 1
         res_y.append(tmp)
 
+if len(res_y) == 0:
+    res_y = y1
+else:
+    res_y = max(res_y)
+
 res = 0
 for i in range(x1, res_x + 1):
-    for j in range(y1, max(res_y) + 1):
+    for j in range(y1, res_y + 1):
         res += 1
 
 print(res)
