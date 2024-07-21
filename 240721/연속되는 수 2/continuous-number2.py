@@ -9,3 +9,5 @@ for i in range(n):
     else:
         cnt = 1
     res = max(res, cnt)
+
+print(res)
