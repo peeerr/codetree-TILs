@@ -12,14 +12,15 @@ n, m = map(int, input().split())
 
 arr1, arr2 = f(n), f(m)
 
-head = 'a' if arr1[1] > arr2[1] else 'b'
-cnt = 0
+head, cnt = 0, 0
 for x1, x2 in zip(arr1, arr2):
-    if x1 > x2 and head == 'b':
-        cnt += 1
-        head = 'a'
-    elif x1 < x2 and head == 'a':
-        cnt += 1
-        head = 'b'
+    if x1 > x2:
+        if head == 2:
+            cnt += 1
+        head = 1
+    elif x1 < x2:
+        if head == 1:
+            cnt += 1
+        head = 2
 
 print(cnt)
