@@ -1,6 +1,6 @@
 N, K, P, T = map(int, input().split())
 
-arr = [0 for _ in range(251)]
+handshake_cnt = [K for _ in range(101)]
 infectee = [False for _ in range(101)]
 infectee[P] = True
 
@@ -9,16 +9,15 @@ handshakes = sorted([list(map(int, input().split())) for _ in range(T)], key=lam
 for handshake in handshakes:
     t, x, y = handshake
 
-    if (not infectee[x] and infectee[y]) and K != 0:
-        arr[t] = x
+    if (not infectee[x] and infectee[y]) and handshake_cnt[y] != 0:
         infectee[x] = True
-        K -= 1
-    elif infectee[x] and not infectee[y] and K != 0:
-        arr[t] = y
+        handshake_cnt[y] -= 1
+    elif infectee[x] and not infectee[y] and handshake_cnt[x] != 0:
         infectee[y] = True
-        K -= 1
+        handshake_cnt[x] -= 1
     elif infectee[x] and infectee[y]:
-        K -= 1
+        handshake_cnt[x] -= 1
+        handshake_cnt[y] -= 1
 
 for i in range(1, N + 1):
     if infectee[i]:
