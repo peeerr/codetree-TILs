@@ -9,13 +9,13 @@ handshakes = sorted([list(map(int, input().split())) for _ in range(T)], key=lam
 for handshake in handshakes:
     t, x, y = handshake
 
-    if (not infectee[x] and infectee[y]) and handshake_cnt[y] != 0:
+    if (not infectee[x] and infectee[y]) and handshake_cnt[y] > 0:
         infectee[x] = True
         handshake_cnt[y] -= 1
-    elif infectee[x] and not infectee[y] and handshake_cnt[x] != 0:
+    elif (infectee[x] and not infectee[y]) and handshake_cnt[x] > 0 :
         infectee[y] = True
         handshake_cnt[x] -= 1
-    elif infectee[x] and infectee[y]:
+    elif (infectee[x] and infectee[y]) and (handshake_cnt[x] > 0 or handshake_cnt[y] > 0):
         handshake_cnt[x] -= 1
         handshake_cnt[y] -= 1
 
