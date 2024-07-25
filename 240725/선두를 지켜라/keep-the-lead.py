@@ -1,18 +1,16 @@
+def f(n):
+    arr, pos = [0], 1
+    for _ in range(n):
+        v, t = map(int, input().split())
+        for _ in range(t):
+            arr.append(arr[pos - 1] + v)
+            pos += 1
+    return arr
+
+
 n, m = map(int, input().split())
 
-arr1, pos = [0], 1
-for _ in range(n):
-    v, t = map(int, input().split())
-    for _ in range(t):
-        arr1.append(arr1[pos - 1] + v)
-        pos += 1
-
-arr2, pos = [0], 1
-for _ in range(m):
-    v, t = map(int, input().split())
-    for _ in range(t):
-        arr2.append(arr2[pos - 1] + v)
-        pos += 1
+arr1, arr2 = f(n), f(m)
 
 head = 'a' if arr1[1] > arr2[1] else 'b'
 cnt = 0
