@@ -6,7 +6,7 @@ n, t = map(int, input().split())
 r, c, d = map(lambda x : int(x) if x.isdigit() else x, input().split())
 
 grid = [[0 for _ in range(n)] for _ in range(n)]
-dx, dy = {'U': 1, 'D': -1, 'R': 0, 'L': 0}, {'U': 0, 'D': 0, 'R': 1, 'L': -1}
+dx, dy = {'U': -1, 'D': 1, 'R': 0, 'L': 0}, {'U': 0, 'D': 0, 'R': 1, 'L': -1}
 
 x = r - 1; y = c - 1
 for _ in range(t):
