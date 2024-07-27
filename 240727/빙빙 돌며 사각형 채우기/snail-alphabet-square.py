@@ -10,8 +10,14 @@ dx, dy = [0, 1, 0, -1], [1, 0, -1, 0]
 
 x, y = 0, 0
 direction = 0
+num = 65
 
-for num in range(65, n * m + 65):
+for _ in range(n * m):
+    num = num % 91
+
+    if num < 65:
+        num += 65
+
     grid[x][y] = chr(num)
 
     nx, ny = x + dx[direction], y + dy[direction]
@@ -20,6 +26,7 @@ for num in range(65, n * m + 65):
         direction = (direction + 1) % 4
 
     x, y = x + dx[direction], y + dy[direction]
+    num += 1
 
 for i in range(n):
     for j in range(m):
