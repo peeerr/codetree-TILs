@@ -45,42 +45,17 @@ k = int(input())
 dx, dy = [-1, 0, 1, 0], [0, 1, 0, -1]
 
 x, y, direction = init(n)
-# print(x, y)
-# print(direction)
 
-cnt = 1
+cnt = 0
 end = False
 
-while True:
+while in_range(x, y):
     if grid[x][y] == '/':
-        if direction == 0:
-            direction += 1
-        elif direction == 1:
-            direction -= 1
-        elif direction == 2:
-            direction += 1
-        else:
-            direction -= 1
-        nx, ny = x + dx[direction], y + dy[direction]
-        if in_range(nx, ny):
-            cnt += 1
-            x, y = nx, ny
-        else:
-            break
+        direction = direction ^ 1
+        x, y = x + dx[direction], y + dy[direction]
     else:
-        if direction == 0:
-            direction = 3
-        elif direction == 1:
-            direction = 2
-        elif direction == 2:
-            direction = 1
-        else:
-            direction = 0
-        nx, ny = x + dx[direction], y + dy[direction]
-        if in_range(nx, ny):
-            cnt += 1
-            x, y = nx, ny
-        else:
-            break
+        direction = 3 - direction
+        x, y = x + dx[direction], y + dy[direction]
+    cnt += 1
 
 print(cnt)
