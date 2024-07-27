@@ -6,11 +6,11 @@ n = int(input())
 
 grid = [[0 for _ in range(n)] for _ in range(n)]
 
-dx, dy = [0, -1, 0, 1], [1, 0, -1, 0]
-x, y = (n - 1) // 2, (n - 1) // 2
+dx, dy = [0, -1, 0, 1], [-1, 0, 1, 0]
+x, y = n - 1, n - 1
 direction = 0
 
-for num in range(1, n ** 2 + 1):
+for num in range(n ** 2, 0, -1):
     grid[x][y] = num
 
     nx, ny = x + dx[direction], y + dy[direction]
