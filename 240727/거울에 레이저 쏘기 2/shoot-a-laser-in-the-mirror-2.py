@@ -4,9 +4,9 @@ def init(k, n):
     elif k <= 2 * n:
         return k - n - 1, n - 1, 3
     elif k <= 3 * n:
-        return n - 1, (k - n  - 1) % n, 0
+        return n - 1, n - (k - 2 * n), 0
     else:
-        return n - (k - 1) % n - 1, 0, 1
+        return n - (k - 3 * n), 0, 1
 
 
 def in_range(x, y):
