@@ -1,18 +1,16 @@
 import sys
 
-def binary_to_decimal():
-    n = 0
-    for i, x in enumerate(reversed(a)):
-        n += x * (2 ** i)
-    return n
-
-
 a = list(map(int, list(input())))
 max_n = -sys.maxsize
 
 for i in range(len(a)):
-    a[i] = abs(a[i] - 1)
-    max_n = max(max_n, binary_to_decimal())
-    a[i] = abs(a[i] - 1)
+    a[i] = 1 - a[i]
+    
+    n = 0
+    for x in a:
+        n = n * 2 + x
+
+    max_n = max(n, max_n)
+    a[i] = 1 - a[i]
 
 print(max_n)
