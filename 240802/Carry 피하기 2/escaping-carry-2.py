@@ -1,28 +1,14 @@
 def is_occur_carry(num1, num2, num3):
-    num1, num2, num3 = adjust_digits(num1, num2, num3)
-    
-    for i, j, k in zip(num1, num2, num3):
-        if i + j + k >= 10:
-            return True
+    if (num1 % 10) + (num2 % 10) + (num3 % 10) >= 10:
+        return True
+    elif (num1 // 10 % 10) + (num2 // 10 % 10) + (num3 // 10 % 10) >= 10:
+        return True
+    elif (num1 // 100 % 10) + (num2 // 100 % 10) + (num3 // 100 % 10) >= 10:
+        return True
+    elif (num1 // 1000 % 100) + (num2 // 1000 % 100) + (num3 // 1000 % 100) >= 10:
+        return True
+
     return False
-
-
-def adjust_digits(num1, num2, num3):
-    num1, num2, num3 = list(str(num1)), list(str(num2)), list(str(num3))
-    length = max(len(num1), len(num2), len(num3))
-
-    for _ in range(length - len(num1)):
-        num1.insert(0, 0)
-    for _ in range(length - len(num2)):
-        num2.insert(0, 0)
-    for _ in range(length - len(num3)):
-        num3.insert(0, 0)
-
-    num1 = list(map(int, num1))
-    num2 = list(map(int, num2))
-    num3 = list(map(int, num3))
-
-    return num1, num2, num3
 
 
 n = int(input())
