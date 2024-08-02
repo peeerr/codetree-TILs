@@ -13,7 +13,7 @@ for x in range(n):
         if grid[x][y] == 'L':
             for dx, dy in zip(dxs, dys):
                 nx1, ny1 = x + dx, y + dy
-                nx2, ny2 = y + (dy * 2), y + (dy * 2)
+                nx2, ny2 = x + (dx * 2), y + (dy * 2)
                 if in_range(nx1, ny1) and in_range(nx2, ny2) and grid[nx1][ny1] == 'E' and grid[nx2][ny2] == 'E':
                     res += 1
 
