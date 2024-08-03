@@ -19,11 +19,11 @@ for x in range(n):
                     nx, ny = x + (dx * i), y + (dy * i)
                     if in_range(nx, ny) and grid[nx][ny] == grid[x][y]:
                         cnt += 1
-                        if cnt == 4:
-                            res = grid[x][y]
-                            for _ in range(2):
-                                nx, ny = nx - dx, ny - dy
-                            pos = (nx + 1, ny + 1)
+                        if i == 2:
+                            tmp = (nx + 1, ny + 1)        
+                if cnt == 4:
+                    res = grid[x][y]
+                    pos = tmp
 
 print(res)
 
