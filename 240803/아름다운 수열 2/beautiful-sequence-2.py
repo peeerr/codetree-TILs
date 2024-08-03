@@ -5,11 +5,7 @@ b = list(map(int, input().split()))
 res = 0
 
 for i in range(n - m + 1):
-    tmp = b[:]
-    for j in range(i, i + m):
-        if a[j] in tmp:
-            tmp.remove(a[j])
-            if len(tmp) == 0:
-                res += 1
+    if sorted(a[i:i + m]) == sorted(b):
+        res += 1
 
 print(res)
