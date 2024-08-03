@@ -1,17 +1,15 @@
 n = int(input())
-infos = [list(map(lambda x : int(x) if x.isdigit() else x, input().split())) for _ in range(n)]
+arr = [0 for _ in range(101)]
 
-length = max(infos, key=lambda x : x[0])[0]
-arr = [0 for _ in range(length + 1)]
-
-for info in infos:
-    arr[info[0]] = info[1]
+for _ in range(n):
+    info = input().split()
+    arr[int(info[0])] = info[1]
 
 res = 0
 
-for i in range(1, length + 1):
+for i in range(1, 101):
     if arr[i] in ['G', 'H']:
-        for j in range(1, length + 1 - i):
+        for j in range(1, 101 - i):
             if arr[i + j] in ['G', 'H']:
                 g, h = 0, 0
                 for k in range(i, i + j + 1):
