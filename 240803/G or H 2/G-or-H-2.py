@@ -12,9 +12,9 @@ res = 0
 for i in range(1, length + 1):
     if arr[i] in ['G', 'H']:
         for j in range(1, length + 1 - i):
-            if arr[i + j - 1] in ['G', 'H']:
+            if arr[i + j] in ['G', 'H']:
                 g, h = 0, 0
-                for k in range(i, i + j):
+                for k in range(i, i + j + 1):
                     if arr[k] == 'G':
                         g += 1
                     elif arr[k] == 'H':
@@ -22,4 +22,4 @@ for i in range(1, length + 1):
                 if (g != 0 and h != 0 and g == h) or (g == 0 and h == j) or (h == 0 and g == j):
                     res = max(res, j)
             
-print(res - 1 if res != 0 else res)
+print(res)
