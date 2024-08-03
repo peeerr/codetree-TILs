@@ -3,7 +3,7 @@ arr = [0 for _ in range(101)]
 
 for _ in range(n):
     info = tuple(map(int, input().split()))
-    arr[info[1]] = info[0]
+    arr[info[1]] += info[0]
 
 res = 0
 
