@@ -19,7 +19,7 @@ for i in range(1, length + 1):
                         g += 1
                     elif arr[k] == 'H':
                         h += 1
-                if (g != 0 and h != 0 and g == h) or (g == 0 and h == j) or (h == 0 and g == j):
+                if (g != 0 and h != 0 and g == h) or (g == 0 and h == j - 1) or (h == 0 and g == j - 1):
                     res = max(res, j)
             
 print(res)
