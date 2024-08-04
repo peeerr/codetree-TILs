@@ -8,16 +8,21 @@ res = sys.maxsize
 for i in range(n):
     for j in range(i + 1, n):
         for k in range(n):
-            if i == k:
+            if i == k or j == k:
                 continue
             
-            rest_team = sum(arr) - (arr[i] + arr[j] + arr[k])
-            max_team = max(arr[i] + arr[j], arr[k], rest_team)
-            min_team = min(arr[i] + arr[j], arr[k], rest_team)
+            team1 = arr[i] + arr[j]
+            team2 = arr[k]
+            team3 = sum(arr) - (arr[i] + arr[j] + arr[k])
+
+            if team1 == team2 or team1 == team3 or team2 == team3:
+                continue
+
+            max_team = max(team1, team2, team3)
+            min_team = min(team1, team2, team3)
             sub = max_team - min_team
 
-            if sub != 0:
-                res = min(res, sub)
+            res = min(res, sub)
 
 if res == sys.maxsize:
     print(-1)
