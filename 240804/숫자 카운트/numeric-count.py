@@ -1,10 +1,14 @@
 n = int(input())
 arr = [list(map(int, input().split())) for _ in range(n)]
-ok, res = 0, 0
+res = 0
 
 for i in range(1, 10):
-    for j in range(i + 1, 10):
-        for k in range(j + 1, 10):
+    for j in range(1, 10):
+        for k in range(1, 10):
+            if i == j or i == k or j == k:
+                continue
+
+            ok = 0
 
             for x in arr:
                 n1, n2, n3 = list(map(int, list(str(x[0]))))
