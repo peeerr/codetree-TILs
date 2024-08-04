@@ -6,10 +6,10 @@ n = len(arr)
 res = sys.maxsize
 
 for i in range(n):
-    for j in range(n):
+    for j in range(i + 1, n):
         for k in range(n):
-            for l in range(n):
-                if i == j or i == k or i == l or j == k or j == l or k == l:
+            for l in range(k + 1, n):
+                if k == i or i == l or j == k or j == l:
                     continue
 
                 rest_team = sum(arr) - (arr[i] + arr[j] + arr[k] + arr[l])
