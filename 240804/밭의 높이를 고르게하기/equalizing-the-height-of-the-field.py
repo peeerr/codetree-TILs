@@ -5,15 +5,10 @@ arr = list(map(int, input().split()))
 
 res = sys.maxsize
 
-for i in range(n):
-    for j in range(i + 1, n):
-        cnt, cost = 0, 0
-        for k in range(i, j + 1):
-            cost += abs(h - arr[k])
-            cnt += 1
-            if cnt == t:
-                break
-        if cnt == t:
-            res = min(res, cost)
+for i in range(n - t):
+    cost = 0
+    for j in range(i, i + t):
+        cost += abs(h - arr[j])
+    res = min(res, cost)
 
 print(res)
