@@ -5,7 +5,7 @@ arr = list(map(int, input().split()))
 
 res = sys.maxsize
 
-for i in range(n - t):
+for i in range(n - t + 1):
     cost = 0
     for j in range(i, i + t):
         cost += abs(h - arr[j])
