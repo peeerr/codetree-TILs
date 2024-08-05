@@ -12,6 +12,7 @@ for i in range(n):
             height = max(arr[i][1], arr[j][1], arr[k][1]) - min(arr[i][1], arr[j][1], arr[k][1])
             area = width * height / 2
 
-            res = max(res, area)
+            if area == int(area):
+                res = max(res, int(area))
 
-print(int(res * 2))
+print(res * 2)
