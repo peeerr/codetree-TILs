@@ -14,4 +14,4 @@ for i in range(n):
         if distance < min_distance:
             min_distance = distance
 
-print(int(min_distance ** 2))
+print(round(min_distance ** 2))
