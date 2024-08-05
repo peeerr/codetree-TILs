@@ -8,9 +8,8 @@ for i in range(n):
             if i == j or i == k or j == k:
                 continue
             
-            width = max(arr[i][0], arr[j][0], arr[k][0]) - min(arr[i][0], arr[j][0], arr[k][0])
-            height = max(arr[i][1], arr[j][1], arr[k][1]) - min(arr[i][1], arr[j][1], arr[k][1])
-            area = width * height / 2
+
+            area = 0.5 * abs((arr[i][0] * arr[j][1] + arr[j][0] * arr[k][1] + arr[k][0] * arr[i][1]) - (arr[j][1] * arr[i][1] + arr[k][0] * arr[j][1] + arr[i][0] * arr[k][1]))
 
             if area == int(area):
                 res = max(res, int(area))
