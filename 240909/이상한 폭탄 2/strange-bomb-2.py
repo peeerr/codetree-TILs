@@ -20,4 +20,4 @@ for i in range(n):
             res.append(numbers[i])
 
 
-print(max(res))
+print(max(res)) if res else print(-1)
