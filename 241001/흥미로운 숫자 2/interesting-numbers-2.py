@@ -8,14 +8,7 @@ for num in range(x, y + 1):
     for x in map(int, str(num)):
         tmp[x] += 1
 
-    two, one = 0, 0
-    for x in tmp:
-        if x >= 2:
-            two += 1
-        elif x == 1:
-            one += 1
-
-    if two == 1 and one == 1:
+    if tmp.count(1) == 1 and tmp.count(0) == 8:
         ans += 1
 
 print(ans)
