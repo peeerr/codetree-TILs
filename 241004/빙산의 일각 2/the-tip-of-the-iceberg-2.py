@@ -5,12 +5,14 @@ ans = 0
 
 for h in range(1, 1001):
     cnt = 0
-    for i in range(n):
-        if i == 0 and height[i] - h > 0:
+
+    if height[0] > h:
+        cnt += 1
+
+    for i in range(1, n):
+        if height[i - 1] <= h and height[i] > h:
             cnt += 1
-        else:
-            if height[i - 1] - h <= 0 and height[i] - h > 0:
-                cnt += 1
+            
     ans = max(ans, cnt)
 
 print(ans)
