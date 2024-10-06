@@ -3,15 +3,18 @@ arr = [list(map(int, input().split())) for _ in range(n)]
 
 ans = 0
 
-for i in range(1, 4):
+for start in range(1, 4):
+    current_position = start
+
     score = 0
 
-    for tmp in arr:
-        numbers = tmp[:]
-        
-        numbers[0], numbers[1] = numbers[1], numbers[0]
+    for a, b, c in arr:
+        if current_position == a:
+            current_position = b
+        elif current_position == b:
+            current_position = a
 
-        if numbers[numbers[2] - 1] == i:
+        if current_position == c:
             score += 1
 
     ans = max(ans, score)
