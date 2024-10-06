@@ -13,7 +13,7 @@ for i in range(101):
         success = True
 
         for x, y in positions:
-            if x == i or y == j or x == j or y == i:
+            if x == i or y == j:
                 success = False
                 break
 
