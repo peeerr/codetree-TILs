@@ -7,10 +7,6 @@ ans = sys.maxsize
 
 for i in range(n):
     for j in range(n):
-
-        if i == j:
-            continue
-
         s = 0
 
         for k in range(n - 1):
