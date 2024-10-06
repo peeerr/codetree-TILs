@@ -6,7 +6,7 @@ positions = [list(map(int, input().split())) for _ in range(n)]
 ans = sys.maxsize
 
 for i in range(101):
-    for j in range(i + 1, 101):
+    for j in range(101):
         
         a1, a2, a3, a4 = 0, 0, 0, 0
 
