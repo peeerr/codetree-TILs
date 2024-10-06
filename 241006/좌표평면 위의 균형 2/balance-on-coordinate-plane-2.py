@@ -5,12 +5,18 @@ positions = [list(map(int, input().split())) for _ in range(n)]
 
 ans = sys.maxsize
 
-for i in range(0, 101, 2):
-    for j in range(0, 101, 2):
+for i in range(101):
+    for j in range(101):
         
         a1, a2, a3, a4 = 0, 0, 0, 0
 
+        success = True
+
         for x, y in positions:
+            if x == i or y == j or x == j or y == i:
+                success = False
+                break
+
             if x > i and y > j:
                 a1 += 1
             elif x < i and y > j:
@@ -20,7 +26,7 @@ for i in range(0, 101, 2):
             elif x > i and y < j:
                 a4 += 1
 
-        if a1 and a2 and a3 and a4:
+        if success:
             ans = min(ans, max(a1, a2, a3, a4))
 
 print(ans)
