@@ -3,18 +3,16 @@ arr = [list(map(int, input().split())) for _ in range(n)]
 
 ans = 0
 
-for start in range(1, 4):
-    current_position = start
-
+for i in range(1, 4):
     score = 0
 
-    for a, b, c in arr:
-        if current_position == a:
-            current_position = b
-        elif current_position == b:
-            current_position = a
+    yabawi = [0 for _ in range(4)]
+    yabawi[i] = 1
 
-        if current_position == c:
+    for a, b, c in arr:
+        yabawi[a], yabawi[b] = yabawi[b], yabawi[a]
+
+        if yabawi[c]:
             score += 1
 
     ans = max(ans, score)
