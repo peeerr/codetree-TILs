@@ -5,9 +5,9 @@ ans = 0
 
 for i in range(11):
     for x_y1 in range(2):
-        for j in range(i + 1, 11):
+        for j in range(11):
             for x_y2 in range(2):
-                for k in range(j + 1, 11):
+                for k in range(11):
                     for x_y3 in range(2):
 
                         success = True
