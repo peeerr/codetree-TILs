@@ -13,10 +13,6 @@ for i in range(101):
         success = True
 
         for x, y in positions:
-            if x == i or y == j:
-                success = False
-                break
-
             if x > i and y > j:
                 a1 += 1
             elif x < i and y > j:
