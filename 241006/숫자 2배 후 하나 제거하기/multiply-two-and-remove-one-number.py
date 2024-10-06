@@ -18,9 +18,9 @@ for i in range(n):
                 continue
 
             if k == i:
-                s += abs(arr[k] * 2 - arr[k + 1])
+                s += abs((arr[k] * 2) - arr[k + 1])
             elif k + 1 == i:
-                s += abs(arr[k] - arr[k + 1] * 2)
+                s += abs(arr[k] - (arr[k + 1] * 2))
             else:
                 s += abs(arr[k] - arr[k + 1])
 
