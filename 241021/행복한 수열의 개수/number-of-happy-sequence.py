@@ -8,9 +8,8 @@ def is_happy(i, j):
                 cnt += 1
             else:
                 cnt = 1
-            if cnt >= m:
-                ret_Val += 1
-                break
+        if cnt >= m:
+            ret_Val += 1
 
     if j == 0:
         cnt = 1
@@ -19,9 +18,8 @@ def is_happy(i, j):
                 cnt += 1
             else:
                 cnt = 1
-            if cnt >= m:
-                ret_Val += 1
-                break
+        if cnt >= m:
+            ret_Val += 1
 
     return ret_Val
 
