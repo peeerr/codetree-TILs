@@ -4,11 +4,11 @@ def is_happy(lst):
     for i in range(n - 1):
         if lst[i] == lst[i + 1]:
             cnt += 1
+        else:
+            cnt = 1
         max_cnt = max(max_cnt, cnt)
     
-    if max_cnt >= m:
-        return 1
-    return 0
+    return max_cnt >= m
 
 
 n, m = map(int, input().split())
