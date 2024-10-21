@@ -10,8 +10,8 @@ def n_check(lst):
                     if k == i and l == j:
                         continue
                     sum_n += lst[k][l]
-
-    ans = max(ans, sum_n)
+            
+            ans = max(ans, sum_n)
 
 
 n, m = map(int, input().split())
