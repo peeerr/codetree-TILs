@@ -20,16 +20,16 @@ grid = [list(map(int, input().split())) for _ in range(n)]
 ans = 0
 
 for i in range(n - 1):
-    for j in range(n - 1):
+    for j in range(m - 1):
         n_check([[grid[i][j], grid[i][j + 1]], [grid[i + 1][j], grid[i + 1][j + 1]]])
 
 for i in range(n):
-    for j in range(n):
+    for j in range(m):
         row, col = 0, 0
-        if j + 2 < n:
-            row = grid[i][j] + grid[i][j + 1] + grid[i][j + 2]
         if i + 2 < n:
-            col = grid[i][j] + grid[i + 1][j] + grid[i + 2][j]
-        ans = max(ans, row, col)
+            height = grid[i][j] + grid[i + 1][j] + grid[i + 2][j]
+        if j + 2 < m:
+            width = grid[i][j] + grid[i][j + 1] + grid[i][j + 2]
+        ans = max(ans, height, width)
 
 print(ans)
