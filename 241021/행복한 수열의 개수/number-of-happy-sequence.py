@@ -8,6 +8,7 @@ def is_happy(lst):
     
     if max_cnt >= m:
         return 1
+    return 0
 
 
 n, m = map(int, input().split())
