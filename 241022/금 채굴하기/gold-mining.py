@@ -14,8 +14,8 @@ for k in range(n + 1):
             
             cost, gold = 0, 0
 
-            for l in range(-100, 100):
-                for o in range(-100, 100):
+            for l in range(-25, 25):
+                for o in range(-25, 25):
                     if abs(l - i) + abs(o - j) <= k:
                         cost += 1
                         if in_range(l, o):
