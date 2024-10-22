@@ -7,7 +7,7 @@ grid = [list(map(int, input().split())) for _ in range(n)]
 
 ans = 0
 
-for k in range(n):
+for k in range(n + 1):
     
     for i in range(n):
         for j in range(n):
