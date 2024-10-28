@@ -23,4 +23,4 @@ for i in range(n):
                 if is_success:
                     ans = max(ans, cnt)
 
-print(ans)
+print(ans) if ans > 0 else print(-1)
