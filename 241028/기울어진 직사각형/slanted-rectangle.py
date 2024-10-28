@@ -12,6 +12,7 @@ def rectangle_sum(x, y):
             total = 0
             is_move_0, is_move_2 = False, False 
             is_move_1, is_move_3 = False, False
+            is_success = False
 
             for k in range(len(dxs)):
                 if k == 0 or k == 2:
@@ -26,6 +27,7 @@ def rectangle_sum(x, y):
                         total += grid[x][y]
                         x, y = nx, ny
                         if x == start_x and y == start_y:
+                            is_success = True
                             break
 
                 elif k == 1 or k == 3:
@@ -40,9 +42,10 @@ def rectangle_sum(x, y):
                         total += grid[x][y]
                         x, y = nx, ny
                         if x == start_x and y == start_y:
+                            is_success = True
                             break
 
-            if is_move_0 and is_move_1 and is_move_2 and is_move_3:
+            if is_success and is_move_0 and is_move_1 and is_move_2 and is_move_3:
                 ans = max(ans, total)
 
 
