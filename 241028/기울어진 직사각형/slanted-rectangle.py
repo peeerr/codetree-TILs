@@ -4,12 +4,14 @@ def in_range(x, y):
 
 def rectangle_sum(x, y):
     global ans
+    start_x , start_y = x, y
 
     for i in range(1, n):
         for j in range(1, n):
+            x, y = start_x, start_y
             total = 0
             is_move_0, is_move_2 = False, False 
-            is_move_1, is_move_3 = False, False 
+            is_move_1, is_move_3 = False, False
 
             for k in range(len(dxs)):
                 if k == 0 or k == 2:
@@ -23,6 +25,8 @@ def rectangle_sum(x, y):
                             is_move_2 = True
                         total += grid[x][y]
                         x, y = nx, ny
+                        if x == start_x and y == start_y:
+                            break
 
                 elif k == 1 or k == 3:
                     for _ in range(j):
@@ -35,6 +39,8 @@ def rectangle_sum(x, y):
                             is_move_3 = True
                         total += grid[x][y]
                         x, y = nx, ny
+                        if x == start_x and y == start_y:
+                            break
 
             if is_move_0 and is_move_1 and is_move_2 and is_move_3:
                 ans = max(ans, total)
