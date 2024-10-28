@@ -2,51 +2,21 @@ def in_range(x, y):
     return 0 <= x < n and 0 <= y < n
 
 
-def rectangle_sum(x, y):
-    global ans
-    start_x , start_y = x, y
+def rectangle_sum(x, y, i, j):
+    total = 0
+    move_nums = [i, j, i, j]
 
-    for i in range(1, n):
-        for j in range(1, n):
-            x, y = start_x, start_y
-            total = 0
-            is_move_0, is_move_2 = False, False 
-            is_move_1, is_move_3 = False, False
-            is_success = False
+    for dx, dy, move_num in zip(dxs, dys, move_nums):
+        for _ in range(move_num):
+            nx, ny = x + dx, y + dy
 
-            for k in range(len(dxs)):
-                if k == 0 or k == 2:
-                    for _ in range(i):
-                        nx, ny = x + dxs[k], y + dys[k]
-                        if not in_range(nx, ny):
-                            break
-                        if k == 0:
-                            is_move_0 = True
-                        if k == 2:
-                            is_move_2 = True
-                        total += grid[x][y]
-                        x, y = nx, ny
-                        if x == start_x and y == start_y:
-                            is_success = True
-                            break
+            if not in_range(nx, ny):
+                return 0
+            
+            total += grid[nx][ny]
+            x, y = nx, ny
 
-                elif k == 1 or k == 3:
-                    for _ in range(j):
-                        nx, ny = x + dxs[k], y + dys[k]
-                        if not in_range(nx, ny):
-                            break
-                        if k == 1:
-                            is_move_1 = True
-                        if k == 3:
-                            is_move_3 = True
-                        total += grid[x][y]
-                        x, y = nx, ny
-                        if x == start_x and y == start_y:
-                            is_success = True
-                            break
-
-            if is_success and is_move_0 and is_move_1 and is_move_2 and is_move_3:
-                ans = max(ans, total)
+    return total
 
 
 n = int(input())
@@ -57,6 +27,8 @@ ans = 0
 
 for x in range(2, n):
     for y in range(1, n - 1):
-        rectangle_sum(x, y)
+        for i in range(1, n):
+            for j in range(1, n):
+               ans = max(ans, rectangle_sum(x, y, i, j))
 
 print(ans)
