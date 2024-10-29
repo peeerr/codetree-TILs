@@ -18,31 +18,27 @@ def check_spread(r1, r2):
     return False
 
 
+def in_range(r1, r2):
+    return 0 <= r1 < n and 0 <= r2 < n
+
+
 def spread_up(r, d):
     while True:
-        is_continue = False
-        for i in range(r - 1, -1, -1):
-            if check_spread(r, i):
-                d = 'L' if d == 'R' else 'R'
-                shift(i, d)
-                r = i
-                is_continue = True
-                break
-        if not is_continue:
+        if in_range(r, r - 1) and check_spread(r, r - 1):
+            d = 'L' if d == 'R' else 'R'
+            shift(r - 1, d)
+            r = r - 1
+        else:
             break
 
 
 def spread_down(r, d):
     while True:
-        is_continue = False
-        for i in range(r + 1, n):
-            if check_spread(r, i):
-                d = 'L' if d == 'R' else 'R'
-                shift(i, d)
-                r = i
-                is_continue = True
-                break
-        if not is_continue:
+        if in_range(r, r + 1) and check_spread(r, r + 1):
+            d = 'L' if d == 'R' else 'R'
+            shift(r + 1, d)
+            r = r + 1
+        else:
             break
 
 
