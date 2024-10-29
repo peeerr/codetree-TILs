@@ -6,10 +6,7 @@ def shift(r, d):
 
 
 def check_spread(r1, r2):
-    for n1, n2 in zip(grid[r1], grid[r2]):
-        if n1 == n2:
-            return True
-    return False
+    return any([grid[r1][c] == grid[r2][c] for c in range(m)])
 
 
 def in_range(r1, r2):
