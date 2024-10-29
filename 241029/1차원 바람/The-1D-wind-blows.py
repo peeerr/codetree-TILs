@@ -1,14 +1,8 @@
 def shift(r, d):
     if d == 'L':
-        temp = grid[r][m - 1]
-        for i in range(m - 1, 0, - 1):
-            grid[r][i] = grid[r][i - 1]
-        grid[r][0] = temp
+        grid[r].insert(0, grid[r].pop())
     else:
-        temp = grid[r][0]
-        for i in range(m - 1):
-            grid[r][i] = grid[r][i + 1]
-        grid[r][m - 1] = temp
+        grid[r].append(grid[r].pop(0))
 
 
 def check_spread(r1, r2):
