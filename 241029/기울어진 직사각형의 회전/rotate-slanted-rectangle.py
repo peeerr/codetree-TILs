@@ -17,24 +17,17 @@ def rotate(m1, m2, m3, m4):
     temp = grid[x][y]
 
     if direction:
-        for _ in range(m1):
-            move(0)
-        for _ in range(m2):
-            move(1)
-        for _ in range(m3):
-            move(2)
-        for _ in range(m4):
-            move(3)
+        move_nums = [m1, m2, m3, m4]
+    else:
+        move_nums = [m4, m3, m2, m1]
+
+    for i, move_num in enumerate(move_nums):
+        for _ in range(move_num):
+            move(i)
+    
+    if direction:
         grid[x - 1][y - 1] = temp
     else:
-        for _ in range(m4):
-            move(0)
-        for _ in range(m3):
-            move(1)
-        for _ in range(m2):
-            move(2)
-        for _ in range(m1):
-            move(3)
         grid[x - 1][y + 1] = temp
 
 
