@@ -1,36 +1,28 @@
-def cut(m):
+def cut():
     global n
 
-    temp = []
     i = 0
-    is_success = False
+    is_cut = False
 
     while i < n:
-        is_cut = False
-
         if i + 1 < n and arr[i] == arr[i + 1]:
-            idx, cnt = i + 1, 2
-
-            while idx < n - 1:
-                if arr[idx] != arr[idx + 1]:
-                    break
+            start, cnt = i, 2
+            i += 1
+            
+            while i + 1 < n and arr[i] == arr[i + 1]:
                 cnt += 1
-                idx += 1
+                i += 1
             
             if cnt >= m:
+                for _ in range(cnt):
+                    arr.pop(start)
+                n = len(arr)
+                i = start
                 is_cut = True
-                is_success = True
-                i = idx + 1
-
-        if not is_cut:
-            temp.append(arr[i])
+        else:
             i += 1
 
-    n = len(temp)
-    for i in range(n):
-        arr[i] = temp[i]
-
-    return is_success
+    return is_cut
 
 
 n, m = map(int, input().split())
@@ -39,12 +31,9 @@ arr = [int(input()) for _ in range(n)]
 if m == 1:
     print(0)
 else:
-    while cut(m):
+    while cut():
         pass
 
-    if n:
-        print(n)
-        for i in range(n):
-            print(arr[i])
-    else:
-        print(0)
+    print(n)
+    for x in arr:
+        print(x)
