@@ -5,22 +5,19 @@ def cut():
     is_cut = False
 
     while i < n:
-        if i + 1 < n and arr[i] == arr[i + 1]:
-            start, cnt = i, 2
+        start, cnt = i, 1
+        i += 1
+        
+        while i + 1 < n and arr[i] == arr[i + 1]:
+            cnt += 1
             i += 1
-            
-            while i + 1 < n and arr[i] == arr[i + 1]:
-                cnt += 1
-                i += 1
-            
-            if cnt >= m:
-                for _ in range(cnt):
-                    arr.pop(start)
-                n = len(arr)
-                i = start
-                is_cut = True
-        else:
-            i += 1
+        
+        if cnt >= m:
+            for _ in range(cnt):
+                arr.pop(start)
+            n = len(arr)
+            i = start
+            is_cut = True
 
     return is_cut
 
