@@ -6,7 +6,7 @@ def cut(m):
     is_cut = False
 
     while i < n:
-        if arr[i] == arr[i + 1]:
+        if i + 1 < n and arr[i] == arr[i + 1]:
             idx, cnt = i + 1, 2
 
             while idx < n - 1:
@@ -18,10 +18,10 @@ def cut(m):
             if cnt >= m:
                 is_cut = True
                 i = idx + 1
-        
-        if i < n:
+
+        else:
             temp.append(arr[i])
-        i += 1
+            i += 1
     
     n = len(temp)
     for i in range(n):
