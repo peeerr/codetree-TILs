@@ -23,8 +23,8 @@ while True:
             is_cut = True
             arr[start : end + 1] = [0] * (end - start + 1)
 
-            arr = list(filter(lambda x : x > 0, arr))
-            n = len(arr)
+    arr = list(filter(lambda x : x > 0, arr))
+    n = len(arr)
 
     if not is_cut:
         break
