@@ -33,12 +33,15 @@ def cut(m):
 n, m = map(int, input().split())
 arr = [int(input()) for _ in range(n)]
 
-while cut(m):
-    pass
-
-if n:
-    print(n)
-    for i in range(n):
-        print(arr[i])
-else:
+if m == 1:
     print(0)
+else:
+    while cut(m):
+        pass
+
+    if n:
+        print(n)
+        for i in range(n):
+            print(arr[i])
+    else:
+        print(0)
