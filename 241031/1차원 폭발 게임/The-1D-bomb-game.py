@@ -1,39 +1,34 @@
-def cut():
-    global n
+def find(start):
+    end = start
 
-    i = 0
-    is_cut = False
-
-    while i < n:
-        if i + 1 < n and arr[i] == arr[i + 1]:
-            start, cnt = i, 1
-            i += 1
-            
-            while i + 1 < n and arr[i] == arr[i + 1]:
-                cnt += 1
-                i += 1
-            
-            if cnt >= m:
-                for _ in range(cnt):
-                    arr.pop(start)
-                n = len(arr)
-                i = start
-                is_cut = True
+    for i in range(start, n - 1):
+        if arr[i] == arr[i + 1]:
+            end += 1
         else:
-            i += 1
+            return end
 
-    return is_cut
+    return end
 
 
 n, m = map(int, input().split())
 arr = [int(input()) for _ in range(n)]
 
-if m == 1:
-    print(0)
-else:
-    while cut():
-        pass
+while True:
+    is_cut = False
 
-    print(n)
-    for x in arr:
-        print(x)
+    for start in range(n):
+        end = find(start)
+
+        if end - start + 1 >= m:
+            is_cut = True
+            arr[start : end + 1] = [0] * (end - start + 1)
+
+            arr = list(filter(lambda x : x > 0, arr))
+            n = len(arr)
+
+    if not is_cut:
+        break
+
+print(n)
+for i in range(n):
+    print(arr[i])
