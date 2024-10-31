@@ -3,9 +3,11 @@ def cut(m):
 
     temp = []
     i = 0
-    is_cut = False
+    is_success = False
 
     while i < n:
+        is_cut = False
+
         if i + 1 < n and arr[i] == arr[i + 1]:
             idx, cnt = i + 1, 2
 
@@ -17,17 +19,18 @@ def cut(m):
             
             if cnt >= m:
                 is_cut = True
+                is_success = True
                 i = idx + 1
 
-        else:
+        if not is_cut:
             temp.append(arr[i])
             i += 1
-    
+
     n = len(temp)
     for i in range(n):
         arr[i] = temp[i]
 
-    return is_cut
+    return is_success
 
 
 n, m = map(int, input().split())
