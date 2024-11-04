@@ -1,64 +1,16 @@
-def left_push():
-    for x in range(n):
-        temp = [0 for _ in range(n)]
-        is_already = False
-        idx = 0
+def rotate():
+    temp = [[0 for _ in range(n)] for _ in range(n)]
+    
+    for i in range(n):
+        for j in range(n):
+            temp[j][n - i - 1] = grid[i][j]
 
-        for y in range(n):
-            if grid[x][y]:
-                if not is_already and idx - 1 >= 0 and temp[idx - 1] == grid[x][y]:
-                    temp[idx - 1] += grid[x][y]
-                    is_already = True
-                else:
-                    temp[idx] = grid[x][y]
-                    is_already = False
-                    idx += 1
-
-        for i in range(n):
-            grid[x][i] = temp[i]
+    for i in range(n):
+        for j in range(n):
+            grid[i][j] = temp[i][j]
 
 
-def right_push():
-    for x in range(n):
-        temp = [0 for _ in range(n)]
-        is_already = False
-        idx = 3
-
-        for y in range(n - 1, -1, -1):
-            if grid[x][y]:
-                if not is_already and idx + 1 < n and temp[idx + 1] == grid[x][y]:
-                    temp[idx + 1] += grid[x][y]
-                    is_already = True
-                else:
-                    temp[idx] = grid[x][y]
-                    is_already = False
-                    idx -= 1
-
-        for i in range(n):
-            grid[x][i] = temp[i]
-
-
-def up_push():
-    for y in range(n):
-        temp = [0 for _ in range(n)]
-        is_already = False
-        idx = 0
-
-        for x in range(n):
-            if grid[x][y]:
-                if not is_already and idx - 1 >= 0 and temp[idx - 1] == grid[x][y]:
-                    temp[idx - 1] += grid[x][y]
-                    is_already = True
-                else:
-                    temp[idx] = grid[x][y]
-                    is_already = False
-                    idx += 1
-
-        for i in range(n):
-            grid[i][y] = temp[i]
-
-
-def down_push():
+def move():
     for y in range(n):
         temp = [0 for _ in range(n)]
         is_already = False
@@ -83,13 +35,21 @@ grid = [list(map(int, input().split())) for _ in range(n)]
 d = input()
 
 if d == 'L':
-    left_push()
+    for _ in range(3):
+        rotate()
+    move()
+    rotate()
 elif d == 'R':
-    right_push()
+    rotate()
+    move()
+    for _ in range(3):
+        rotate()
 elif d == 'U':
-    up_push()
+    rotate(); rotate()
+    move()
+    rotate(); rotate()
 elif d == 'D':
-    down_push()
+    move()
 
 for i in range(n):
     print(*grid[i])
