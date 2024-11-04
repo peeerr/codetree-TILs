@@ -46,7 +46,7 @@ grid = [list(map(int, input().split())) for _ in range(n)]
 cols = list(map(lambda x : x - 1, [int(input()) for _ in range(m)]))
 
 for col in cols:
-    bomb(n - 1)
+    bomb(col)
     drop()
 
 for i in range(n):
