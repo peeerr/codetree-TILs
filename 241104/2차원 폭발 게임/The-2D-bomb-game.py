@@ -52,12 +52,15 @@ grid = [list(map(int, input().split())) for _ in range(n)]
 ans = 0
 
 for _ in range(k):
-    bomb()
+    is_done = not bomb()
     drop()
     rotate()
     drop()
 
-bomb()
+is_done = bomb()
+while not is_done:
+    is_done = not bomb()
+    drop()
 
 for i in range(n):
     for j in range(n):
