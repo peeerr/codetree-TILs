@@ -1,6 +1,6 @@
 def bomb():
     is_bomb = False
-    
+
     for j in range(n):
         start, end = 0, 0
         cnt = 1
@@ -52,14 +52,9 @@ grid = [list(map(int, input().split())) for _ in range(n)]
 ans = 0
 
 for _ in range(k):
-    is_done = not bomb()
-    drop()
+    while bomb():
+        drop()
     rotate()
-    drop()
-
-is_done = bomb()
-while not is_done:
-    is_done = not bomb()
     drop()
 
 for i in range(n):
