@@ -35,7 +35,7 @@ while True:
         if clockwise:
             cnt = 0
             clockwise = False
-            d = (d - 1) + 4 % 4
+            d = (d + 1) % 4
         else:
             cnt += 1
             d = (d + 1) % 4
@@ -55,7 +55,7 @@ while True:
             ans += 1
             clockwise = True
 
-    if x == start_x and y == start_y:
+    if ans > n ** 2:
         is_out = False
         break
 
