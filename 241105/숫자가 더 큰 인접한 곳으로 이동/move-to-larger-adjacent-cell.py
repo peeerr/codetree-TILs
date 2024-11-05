@@ -17,6 +17,7 @@ while True:
         if in_range(nx, ny) and grid[x][y] < grid[nx][ny]:
             ans.append(grid[nx][ny])
             x, y = nx, ny
+            break
     
     if length == len(ans):
         break
