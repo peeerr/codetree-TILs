@@ -15,8 +15,13 @@ is_out = True
 ans = 0
 d = 0
 clockwise = True
+cnt = 0
 
 while True:
+    if cnt == 4:
+        is_out = False
+        break
+
     if clockwise:
         nx, ny = x + clock_dxs[d], y + clock_dys[d]
     else:
@@ -28,9 +33,11 @@ while True:
 
     if maze[nx][ny] == '#':
         if clockwise:
+            cnt = 0
             clockwise = False
             d = (d - 1) + 4 % 4
         else:
+            cnt += 1
             d = (d + 1) % 4
         continue
     else:
