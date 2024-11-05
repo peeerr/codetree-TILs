@@ -1,5 +1,5 @@
 def in_range(x, y):
-    return 0 <= x < n and 0 <= y < n 
+    return 0 <= x < n and 0 <= y < n
 
 
 n = int(input())
@@ -27,16 +27,26 @@ while True:
         break
 
     if maze[nx][ny] == '#':
-        clockwise = False
-        d = (d + 1) % 4
+        if clockwise:
+            clockwise = False
+            d = (d - 1) + 4 % 4
+        else:
+            d = (d + 1) % 4
         continue
     else:
-        nnx, nny = nx + clock_dxs[(d + 1) % 4], ny + clock_dys[(d + 1) % 4]
-        if not in_range(nnx, nny) or maze[nnx][nny] == '.':
-            d = (d + 1) % 4
-        x, y = nx, ny
-        ans += 1
-        clockwise = True
+        if not clockwise and d == 1:
+            d += 2
+            clockwise = True
+        elif not clockwise and d == 3:
+            d -= 2
+            clockwise = True
+        else:
+            nnx, nny = nx + clock_dxs[(d + 1) % 4], ny + clock_dys[(d + 1) % 4]
+            if not in_range(nnx, nny) or maze[nnx][nny] == '.':
+                d = (d + 1) % 4
+            x, y = nx, ny
+            ans += 1
+            clockwise = True
 
     if x == start_x and y == start_y:
         is_out = False
