@@ -67,24 +67,3 @@ for d, p in moves:
         break
 
 print(ans)
-
-
-# D 3
-# R 3
-# U 3
-# L 2
-# D 2
-# R 1
-# U 1
-# R 1
-# D 2
-# L 3
-# U 1
-# R 3
-# D 1
-# L 3
-# U 3
-# R 1
-# D 1
-# L 1
-# R 100
