@@ -11,6 +11,7 @@ dxs, dys = [-1, 0, 1, 0], [0, 1, 0, -1]
 grid[r][c] = 1
 
 for t in range(1, m + 1):
+    distance = 2 ** (t - 1)
     positions = []
 
     for x in range(n):
@@ -20,7 +21,7 @@ for t in range(1, m + 1):
                 continue
 
             for dx, dy in zip(dxs, dys):
-                nx, ny = x + dx * t, y + dy * t
+                nx, ny = x + dx * distance, y + dy * distance
 
                 if in_range(nx, ny):
                     positions.append((nx, ny))
