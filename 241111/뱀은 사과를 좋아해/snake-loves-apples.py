@@ -33,13 +33,18 @@ for d, p in moves:
         # 이동할 위치에 사과가 없다면, 꼬리 위치 조정
         if grid[nx][ny] == 0 or grid[nx][ny] == 2:
             grid[tail_x][tail_y] = 0
+            is_move = False
 
             for dx, dy in zip(dxs, dys):
                 tail_nx, tail_ny = tail_x + dx, tail_y + dy
 
                 if in_range(tail_nx, tail_ny) and grid[tail_nx][tail_ny] == 2:
                     tail_x, tail_y = tail_nx, tail_ny
+                    is_move = True
                     break
+            
+            if not is_move:
+                tail_x, tail_y = nx, ny
 
         # 겹친 경우 종료
         if grid[nx][ny] == 2:
