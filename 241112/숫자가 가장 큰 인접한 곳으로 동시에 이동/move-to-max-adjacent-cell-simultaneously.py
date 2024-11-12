@@ -42,7 +42,4 @@ for _ in range(t):
                 count[x][y] = 0
                 next_pos.remove((x, y))
 
-for i in range(n):
-    print(*count[i])
-print()
 print(sum([1 if count[x][y] == 1 else 0 for y in range(n) for x in range(n)]))
