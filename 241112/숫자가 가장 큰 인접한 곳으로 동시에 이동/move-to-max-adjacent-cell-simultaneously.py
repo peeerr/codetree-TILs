@@ -7,39 +7,36 @@ grid = [list(map(int, input().split())) for _ in range(n)]
 positions = [tuple(map(lambda x : int(x) - 1, input().split())) for _ in range(m)]
  
 count = [[0 for _ in range(n)] for _ in range(n)]
-next_pos = []
 
 for x, y in positions:
     count[x][y] += 1
-    next_pos.append((x, y))
 
 dxs, dys = [-1, 1, 0, 0], [0, 0, -1, 1]
 
 for _ in range(t):
-    temp = []
-
-    for x, y in next_pos:
-        max_num = 0
-        max_x, max_y = x, y
-        
-        for dx, dy in zip(dxs, dys):
-            nx, ny = x + dx, y + dy
-
-            if in_range(nx, ny) and grid[nx][ny] > max_num:
-                max_num = grid[nx][ny]
-                max_x, max_y = nx, ny
-
-        count[max_x][max_y] += 1
-        count[x][y] -= 1
-        temp.append((max_x, max_y))
-
-    next_pos = set([x for x in temp])
-
-    # 충돌한 구슬 제거
+    next_count = [[0 for _ in range(n)] for _ in range(n)]
+    
     for x in range(n):
         for y in range(n):
-            if count[x][y] > 1:
+            if not count[x][y]:
+                continue
+            
+            max_num, max_x, max_y = 0, 0, 0
+            for dx, dy in zip(dxs, dys):
+                nx, ny = x + dx, y + dy
+
+                if in_range(nx, ny) and grid[nx][ny] > max_num:
+                    max_num = grid[nx][ny]
+                    max_x, max_y = nx, ny
+            
+            next_count[max_x][max_y] += 1
+
+    # 충돌한 부분은 제외하고 count에 다시 복사
+    for x in range(n):
+        for y in range(n):
+            if next_count[x][y] == 1:
+                count[x][y] = 1
+            else:
                 count[x][y] = 0
-                next_pos.remove((x, y))
 
 print(sum([1 if count[x][y] == 1 else 0 for y in range(n) for x in range(n)]))
