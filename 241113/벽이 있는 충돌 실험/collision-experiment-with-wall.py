@@ -18,8 +18,14 @@ for _ in range(T):
         grid[x][y] = 1
     
     dxs, dys = [-1, 1, 0, 0], [0, 0, -1, 1]
+    remain_marbles, count = 0, 0
+    
+    while True:
+        remain_marbles = sum([1 if grid[x][y] == 1 else 0 for y in range(n) for x in range(n)])
 
-    for _ in range(100):
+        if remain_marbles == 0 or count == 10:
+            break
+
         for i, (x, y, d) in enumerate(infos):
             nx, ny = x + dxs[d], y + dys[d]
 
@@ -45,4 +51,10 @@ for _ in range(T):
         for data in remove_data:
             infos.remove(data)
 
-    print(sum([1 if grid[x][y] == 1 else 0 for y in range(n) for x in range(n)]))
+        temp = sum([1 if grid[x][y] == 1 else 0 for y in range(n) for x in range(n)])
+        if remain_marbles == temp:
+            count += 1
+        else:
+            count = 0
+
+    print(remain_marbles)
