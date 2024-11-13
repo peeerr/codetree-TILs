@@ -19,7 +19,7 @@ for asd in range(T):
     
     dxs, dys = [-1, 1, 0, 0], [0, 0, -1, 1]
 
-    for _ in range(10000):
+    for _ in range(1000):
         for i, (x, y, d) in enumerate(infos):
             nx, ny = x + dxs[d], y + dys[d]
 
