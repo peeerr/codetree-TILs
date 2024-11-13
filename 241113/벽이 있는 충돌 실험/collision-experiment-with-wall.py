@@ -32,17 +32,25 @@ for _ in range(T):
             grid[x][y] -= 1
 
         # 충돌한 구슬 제거
-        remove_data = []
+        positions = {}
 
-        for x in range(n):
-            for y in range(n):
-                if grid[x][y] > 1:
-                    for nx, ny, d in infos:
-                        if x == nx and y == ny:
-                            remove_data.append([nx, ny, d])
-                    grid[x][y] = 0
-        
-        for data in remove_data:
-            infos.remove(data)
+        # 각 구슬의 현재 위치를 기록
+        for i, (x, y, d) in enumerate(infos):
+            if (x, y) not in positions:
+                positions[(x, y)] = []
+            positions[(x, y)].append(i)
+
+        remove_indices = set()
+        # 충돌이 발생한 위치만 확인
+        for pos, indices in positions.items():
+            if len(indices) > 1:  # 한 위치에 2개 이상의 구슬이 있는 경우
+                x, y = pos
+                grid[x][y] = 0
+                for idx in indices:
+                    remove_indices.add(idx)
+
+        # 인덱스가 큰 것부터 제거 (작은 인덱스부터 제거하면 나머지 인덱스가 변경됨)
+        for idx in sorted(remove_indices, reverse=True):
+            infos.pop(idx)
 
     print(sum([1 if grid[x][y] == 1 else 0 for y in range(n) for x in range(n)]))
