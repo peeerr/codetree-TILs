@@ -45,4 +45,4 @@ for _ in range(T):
         for data in remove_data:
             infos.remove(data)
 
-    print(remain_marbles)
+    print(sum([1 if grid[x][y] == 1 else 0 for y in range(n) for x in range(n)]))
