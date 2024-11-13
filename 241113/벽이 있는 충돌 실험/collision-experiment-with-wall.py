@@ -4,7 +4,7 @@ def in_range(x, y):
 
 T = int(input())
 
-for asd in range(T):
+for _ in range(T):
     n, m = map(int, input().split())
     infos = [list(map(lambda x : int(x) - 1 if x.isdigit() else x, input().split())) for _ in range(m)]
 
@@ -19,7 +19,7 @@ for asd in range(T):
     
     dxs, dys = [-1, 1, 0, 0], [0, 0, -1, 1]
 
-    for _ in range(1000):
+    for _ in range(100):
         for i, (x, y, d) in enumerate(infos):
             nx, ny = x + dxs[d], y + dys[d]
 
