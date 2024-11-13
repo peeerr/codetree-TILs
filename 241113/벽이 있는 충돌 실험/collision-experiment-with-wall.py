@@ -19,7 +19,7 @@ for asd in range(T):
     
     dxs, dys = [-1, 1, 0, 0], [0, 0, -1, 1]
 
-    for _ in range(35000):
+    for _ in range(25000):
         for i, (x, y, d) in enumerate(infos):
             nx, ny = x + dxs[d], y + dys[d]
 
@@ -33,7 +33,7 @@ for asd in range(T):
 
         # 충돌한 구슬 제거
         remove_data = []
-        
+
         for x in range(n):
             for y in range(n):
                 if grid[x][y] > 1:
