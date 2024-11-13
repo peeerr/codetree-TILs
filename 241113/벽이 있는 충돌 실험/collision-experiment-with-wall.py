@@ -23,7 +23,7 @@ for _ in range(T):
     while True:
         remain_marbles = sum([1 if grid[x][y] == 1 else 0 for y in range(n) for x in range(n)])
 
-        if remain_marbles == 0 or count == 10:
+        if remain_marbles == 0 or count == 100:
             break
 
         for i, (x, y, d) in enumerate(infos):
