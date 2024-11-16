@@ -2,14 +2,15 @@ from collections import deque
 
 
 def can_move(x, y):
-    return 0 <= x < n and 0 <= y < n and len(grid[x][y])
+    return 0 <= x < n and 0 <= y < n and grid[x][y]
 
 
-def find_pos(num):
+def find_pos(move_num):
     for x in range(n):
         for y in range(n):
-            if num in grid[x][y]:
-                return x, y, grid[x][y].index(num)
+            for idx, num in enumerate(grid[x][y]):
+                if num == move_num:
+                    return x, y, idx
 
 
 def find_max_num_pos(x, y):
@@ -53,7 +54,7 @@ for num in move_nums:
 
 for x in range(n):
     for y in range(n):
-        if not len(grid[x][y]):
+        if not grid[x][y]:
             print(None)
         else:
             print(*grid[x][y])
