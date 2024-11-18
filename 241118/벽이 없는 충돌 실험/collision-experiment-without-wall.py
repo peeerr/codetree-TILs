@@ -65,7 +65,7 @@ def move_all():
 def simulate():
     global ans, time
 
-    for _ in range(1000):
+    for _ in range(2000):
         move_all()
         time += 2
 
