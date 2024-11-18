@@ -18,7 +18,7 @@ def move(i, x, y, d, v):
         x, y = nx, ny
     
     return [i, x, y, d, v]
-    
+
 
 def move_all():
     global marbles
@@ -30,7 +30,7 @@ def move_all():
     marbles = temp
 
 
-def remove_duplicate_marbles():
+def select_marbles():
     global marbles
     marbles_dict = defaultdict(list)
     temp = []
@@ -50,7 +50,7 @@ def remove_duplicate_marbles():
 
 def simulate():
     move_all()
-    remove_duplicate_marbles()
+    select_marbles()
 
 
 mapper = {'U': 0, 'D': 1, 'L': 2, 'R': 3}
