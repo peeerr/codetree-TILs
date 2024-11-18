@@ -30,12 +30,30 @@ def remove_duplicate_marbles():
 
     for infos in marbles_dict.values():
         if len(infos) > 1:
-            if ((infos[0][5] and not infos[1][5]) or (not infos[0][5] and infos[1][5])) and infos[1][4] ^ 1 == infos[0][4]:
+            i1, x1, y1, w1, d1, moved1 = infos[0]
+            i2, x2, y2, w2, d2, moved2 = infos[1]
+            if ((moved1 and not moved2) or (not moved1 and moved2)) and d1 ^ 1 == d2:
                 collision_time = time - 1
-                temp.append(sorted(infos, key=lambda k : (-k[3], -k[0]))[0])
-            elif infos[0][5] and infos[1][5]:
+                if w1 > w2:
+                    temp.append([i1, x1, y1, w1, d1, moved1])
+                elif w1 < w2:
+                    temp.append([i2, x2, y2, w2, d2, moved2])
+                else:
+                    if i1 > i2:
+                        temp.append([i1, x1, y1, w1, d1, moved1])
+                    else:
+                        temp.append([i2, x2, y2, w2, d2, moved2])
+            elif moved1 and moved2:
                 collision_time = time
-                temp.append(sorted(infos, key=lambda k : (-k[3], -k[0]))[0])
+                if w1 > w2:
+                    temp.append([i1, x1, y1, w1, d1, moved1])
+                elif w1 < w2:
+                    temp.append([i2, x2, y2, w2, d2, moved2])
+                else:
+                    if i1 > i2:
+                        temp.append([i1, x1, y1, w1, d1, moved1])
+                    else:
+                        temp.append([i2, x2, y2, w2, d2, moved2])
             else:
                 temp.extend(infos)
         else:
@@ -67,7 +85,6 @@ def move_all():
         move(*marble)
     for idx in range(len(marbles)):
         marbles[idx][5] = False
-
 
 def simulate():
     global ans, time
