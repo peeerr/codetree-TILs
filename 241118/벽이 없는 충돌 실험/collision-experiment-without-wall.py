@@ -13,7 +13,7 @@ def init():
     for i in range(1, n + 1):
         x, y, w, d = input().split()
         x, y, w, d = int(x), int(y), int(w), mapper[d]
-        marbles.append([i, y, x, w, d])
+        marbles.append([i, y, x, w, d, False])
 
     return marbles
 
@@ -25,13 +25,19 @@ def remove_duplicate_marbles():
     collision_time = -1
     
     for marble in marbles:
-        _, y, x, _, _ = marble
+        _, y, x, _, _, _ = marble
         marbles_dict[(y, x)].append(marble)
 
     for infos in marbles_dict.values():
         if len(infos) > 1:
-            temp.append(sorted(infos, key=lambda k : (-k[3], -k[0]))[0])
-            collision_time = time
+            if ((infos[0][5] and not infos[1][5]) or (not infos[0][5] and infos[1][5])) and infos[1][4] ^ 1 == infos[0][4]:
+                collision_time = time - 1
+                temp.append(sorted(infos, key=lambda k : (-k[3], -k[0]))[0])
+            elif infos[0][5] and infos[1][5]:
+                collision_time = time
+                temp.append(sorted(infos, key=lambda k : (-k[3], -k[0]))[0])
+            else:
+                temp.extend(infos)
         else:
             temp.append(infos[0])
     marbles = temp
@@ -39,19 +45,18 @@ def remove_duplicate_marbles():
     return collision_time
 
 
-def move(i, y, x, w, d):
+def move(i, y, x, w, d, moved):
     global ans, marbles
     dys, dxs = [1, -1, 0, 0], [0, 0, -1, 1]
 
     ny, nx = y + dys[d], x + dxs[d]
 
     if not in_range(nx, ny):
-        d = d ^ 1
-        ny, nx = y + dys[d], x + dxs[d]
+        return
     
     for idx, marble in enumerate(marbles):
         if marble[0] == i:
-            marbles[idx] = [i, ny, nx, w, d]
+            marbles[idx] = [i, ny, nx, w, d, not moved]
             break
 
     ans = max(ans, remove_duplicate_marbles())
@@ -60,6 +65,8 @@ def move(i, y, x, w, d):
 def move_all():
     for marble in marbles:
         move(*marble)
+    for idx in range(len(marbles)):
+        marbles[idx][5] = False
 
 
 def simulate():
@@ -74,7 +81,7 @@ def simulate():
 
 T = int(input())
 
-for asd in range(T):
+for _ in range(T):
     ans, time = -1, 2
 
     marbles = init()
