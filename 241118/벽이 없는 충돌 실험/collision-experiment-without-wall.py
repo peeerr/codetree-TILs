@@ -1,105 +1,81 @@
 from collections import defaultdict
 
-
 def in_range(x, y):
-    return -1000 <= x <= 1000 and -1000 <= y <= 1000
-
+    return -2000 <= x <= 2000 and -2000 <= y <= 2000
 
 def init():
-    marbles = []
+    marbles = [None] * 101  # N의 최대값이 100이므로
     mapper = {'U': 0, 'D': 1, 'L': 2, 'R': 3}
 
     n = int(input())
     for i in range(1, n + 1):
         x, y, w, d = input().split()
-        x, y, w, d = int(x), int(y), int(w), mapper[d]
-        marbles.append([i, y, x, w, d, False])
+        x, y, w, d = int(x) * 2, int(y) * 2, int(w), mapper[d]
+        marbles[i] = [y, x, w, d]  # ID를 인덱스로 사용
 
-    return marbles
-
+    return marbles, n
 
 def remove_duplicate_marbles():
-    global time, marbles
+    global time, marbles, n
     marbles_dict = defaultdict(list)
-    temp = []
     collision_time = -1
     
-    for marble in marbles:
-        _, y, x, _, _, _ = marble
-        marbles_dict[(y, x)].append(marble)
+    # 존재하는 구슬만 처리
+    for i in range(1, n + 1):
+        if marbles[i]:
+            y, x, w, d = marbles[i]
+            marbles_dict[(y, x)].append((i, y, x, w, d))
 
+    # 충돌 처리
     for infos in marbles_dict.values():
         if len(infos) > 1:
-            i1, x1, y1, w1, d1, moved1 = infos[0]
-            i2, x2, y2, w2, d2, moved2 = infos[1]
-            if ((moved1 and not moved2) or (not moved1 and moved2)) and d1 ^ 1 == d2:
-                collision_time = time - 1
-                if w1 > w2:
-                    temp.append([i1, x1, y1, w1, d1, moved1])
-                elif w1 < w2:
-                    temp.append([i2, x2, y2, w2, d2, moved2])
-                else:
-                    if i1 > i2:
-                        temp.append([i1, x1, y1, w1, d1, moved1])
-                    else:
-                        temp.append([i2, x2, y2, w2, d2, moved2])
-            elif moved1 and moved2:
-                collision_time = time
-                if w1 > w2:
-                    temp.append([i1, x1, y1, w1, d1, moved1])
-                elif w1 < w2:
-                    temp.append([i2, x2, y2, w2, d2, moved2])
-                else:
-                    if i1 > i2:
-                        temp.append([i1, x1, y1, w1, d1, moved1])
-                    else:
-                        temp.append([i2, x2, y2, w2, d2, moved2])
-            else:
-                temp.extend(infos)
+            # 가장 무거운/번호가 큰 구슬 찾기
+            winner = max(infos, key=lambda x: (x[3], x[0]))
+            # 나머지 구슬 제거
+            for i, *_ in infos:
+                if i != winner[0]:
+                    marbles[i] = None
+            collision_time = time
+            # 승자 구슬 위치 업데이트
+            marbles[winner[0]] = list(winner[1:])
         else:
-            temp.append(infos[0])
-    marbles = temp
+            i, y, x, w, d = infos[0]
+            marbles[i] = [y, x, w, d]
 
     return collision_time
 
-
-def move(i, y, x, w, d, moved):
-    global ans, marbles
+def move_all():
+    global ans, n
     dys, dxs = [1, -1, 0, 0], [0, 0, -1, 1]
 
-    ny, nx = y + dys[d], x + dxs[d]
+    # 한 번에 모든 구슬 이동
+    for i in range(1, n + 1):
+        if marbles[i]:
+            y, x, w, d = marbles[i]
+            ny, nx = y + dys[d], x + dxs[d]
+            if in_range(nx, ny):
+                marbles[i] = [ny, nx, w, d]
+            else:
+                marbles[i] = None
 
-    if not in_range(nx, ny):
-        return
-    
-    for idx, marble in enumerate(marbles):
-        if marble[0] == i:
-            marbles[idx] = [i, ny, nx, w, d, not moved]
-            break
-
-    ans = max(ans, remove_duplicate_marbles())
-
-
-def move_all():
-    for marble in marbles:
-        move(*marble)
-    for idx in range(len(marbles)):
-        marbles[idx][5] = False
+    collision_time = remove_duplicate_marbles()
+    if collision_time != -1:
+        ans = collision_time
 
 def simulate():
     global ans, time
 
-    for _ in range(2000):
+    for _ in range(4000):
+        if sum(1 for m in marbles[1 : n + 1] if m) <= 1:  # 구슬이 1개 이하면 종료
+            break
         move_all()
-        time += 2
+        time += 1
 
     print(ans)
-
 
 T = int(input())
 
 for _ in range(T):
-    ans, time = -1, 2
-
-    marbles = init()
+    ans, time = -1, 1
+    marbles, n = init()
     simulate()
