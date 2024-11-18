@@ -13,7 +13,7 @@ def move(i, x, y, d, v):
 
         if not in_range(nx, ny):
             d = d ^ 1
-            nx, ny = nx + dxs[d] * 2, ny + dys[d] * 2
+            nx, ny = x + dxs[d], y + dys[d]
             
         x, y = nx, ny
     
