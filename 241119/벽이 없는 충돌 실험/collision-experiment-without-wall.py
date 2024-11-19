@@ -32,12 +32,12 @@ T = int(input())
 
 c = 4000
 mapper = {'U': 0, 'D': 1, 'L': 2, 'R': 3}
+marbles_grid = [[-1 for _ in range(c + 1)] for _ in range(c + 1)]
 
 for _ in range(T):
     n = int(input())
         
     marbles = []
-    marbles_grid = [[-1 for _ in range(c + 1)] for _ in range(c + 1)]
     time = 1
     ans = -1
 
