@@ -14,12 +14,11 @@ def f(idx):
         return
 
     for i in range(idx, m):
-        selected.append(infos[i])
-        
         res = calc(selected)
         if res == result:
             ans = min(ans, len(selected))
 
+        selected.append(infos[i])
         f(i + 1)
         selected.pop()
 
