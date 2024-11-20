@@ -1,6 +1,6 @@
 def judge():
     length = len(selected)
-    
+
     for i in range(length):
         for j in range(i + 1, length):
             x1, x2 = selected[i]
@@ -9,6 +9,10 @@ def judge():
             if x3 <= max(x1, x2) <= x4:
                 return False
             elif x3 <= min(x1, x2) <= x4:
+                return False
+            elif x1 <= max(x4, x3) <= x2:
+                return False
+            elif x1 <= min(x4, x3) <= x2:
                 return False
     
     return True
