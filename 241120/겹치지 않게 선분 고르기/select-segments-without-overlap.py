@@ -1,6 +1,6 @@
 def judge():
     length = len(selected)
-
+    
     for i in range(length):
         for j in range(i + 1, length):
             x1, x2 = selected[i]
@@ -14,20 +14,17 @@ def judge():
     return True
 
 
-def f(k):
+def f(k, idx):
     global ans
 
     if k == n:
         return
 
-    for i in range(n):
-        if infos[i] in selected:
-            continue
-
+    for i in range(idx, n):
         selected.append(infos[i])
         if judge():
             ans = max(ans, len(selected))
-        f(k + 1)
+        f(k + 1, i + 1)
         selected.pop()
 
 
@@ -36,6 +33,6 @@ infos = [tuple(map(int, input().split())) for _ in range(n)]
 selected = []
 ans = 0
 
-f(0)
+f(0, 0)
 
 print(ans)
