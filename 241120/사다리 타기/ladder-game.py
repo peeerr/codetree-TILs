@@ -10,15 +10,16 @@ def calc(infos):
 def f(idx):
     global ans
 
-    if len(selected) == m:
+    if idx == m:
         return
 
     for i in range(idx, m):
+        selected.append(infos[i])
+
         res = calc(selected)
         if res == result:
             ans = min(ans, len(selected))
 
-        selected.append(infos[i])
         f(i + 1)
         selected.pop()
 
@@ -30,6 +31,10 @@ selected = []
 ans = m
 
 result = calc(infos)
-f(0)
+res = calc([])
 
-print(ans)
+if res == result:
+    print(0)
+else:
+    f(0)
+    print(ans)
