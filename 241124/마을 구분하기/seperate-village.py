@@ -3,6 +3,8 @@ def can_go(x, y):
 
 
 def dfs(x, y):
+    global people_num
+
     dxs, dys = [0, 1, 0, -1], [1, 0, -1, 0]
 
     for dx, dy in zip(dxs, dys):
@@ -10,25 +12,23 @@ def dfs(x, y):
 
         if can_go(nx, ny):
             grid[nx][ny] = 0
-            temp.append(1)
+            people_num += 1
             dfs(nx, ny)
 
 
 n = int(input())
 grid = [list(map(int, input().split())) for _ in range(n)]
 
-villages = 0
-people = []
+people_nums = []
 
 for x in range(n):
     for y in range(n):
         if grid[x][y]:
             grid[x][y] = 0
-            villages += 1
-            temp = [1]
+            people_num = 1
             dfs(x, y)
-            people.append(sum(temp))
+            people_nums.append(people_num)
 
-print(villages)
-for x in sorted(people):
+print(len(people_nums))
+for x in sorted(people_nums):
     print(x)
