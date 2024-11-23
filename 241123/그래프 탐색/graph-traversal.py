@@ -23,7 +23,8 @@ for _ in range(m):
 visited = [False for _ in range(len(graph) + 1)]
 ans = 0
 
-visited[1] = True
-dfs(1)
+if m != 0:
+    visited[1] = True
+    dfs(1)
 
 print(ans)
