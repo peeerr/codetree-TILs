@@ -1,6 +1,3 @@
-from collections import defaultdict
-
-
 def dfs(curr_v):
     global ans
 
@@ -13,7 +10,7 @@ def dfs(curr_v):
 
 n, m = map(int, input().split())
 
-graph = defaultdict(list)
+graph = [[] for _ in range(n + 1)]
 visited = [False for _ in range(n + 1)]
 ans = 0
 
@@ -22,8 +19,7 @@ for _ in range(m):
     graph[x].append(y)
     graph[y].append(x)
 
-if m != 0:
-    visited[1] = True
-    dfs(1)
+visited[1] = True
+dfs(1)
 
 print(ans)
