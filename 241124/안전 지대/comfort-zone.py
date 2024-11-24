@@ -32,6 +32,7 @@ for k in range(1, 101):
         for y in range(m):
             if next_grid[x][y]:
                 area += 1
+                next_grid[x][y] = 0
                 dfs(x, y)
 
     if max_area < area:
