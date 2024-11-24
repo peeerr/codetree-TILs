@@ -4,13 +4,17 @@ def can_go(x, y):
 
 def dfs(x, y):
     dxs, dys = [-1, 1, 0, 0], [0, 0, -1, 1]
+    stack = [(x, y)]
 
-    for dx, dy in zip(dxs, dys):
-        nx, ny = x + dx, y + dy 
+    while stack:
+        x, y = stack.pop()
 
-        if can_go(nx, ny):
-            visited[nx][ny] = True
-            dfs(nx, ny)
+        for dx, dy in zip(dxs, dys):
+            nx, ny = x + dx, y + dy 
+
+            if can_go(nx, ny):
+                visited[nx][ny] = True
+                stack.append((nx, ny))
 
 
 n, m = map(int, input().split())
