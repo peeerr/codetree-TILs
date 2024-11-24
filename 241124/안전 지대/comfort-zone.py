@@ -1,5 +1,5 @@
-def in_range(x, y):
-    return 0 <= x < n and 0 <= y < m and next_grid[x][y]
+def can_go(x, y):
+    return 0 <= x < n and 0 <= y < m and next_grid[x][y] and not visited[x][y]
 
 
 def dfs(x, y):
@@ -8,8 +8,8 @@ def dfs(x, y):
     for dx, dy in zip(dxs, dys):
         nx, ny = x + dx, y + dy 
 
-        if in_range(nx, ny):
-            next_grid[nx][ny] = 0
+        if can_go(nx, ny):
+            visited[nx][ny] = True
             dfs(nx, ny)
 
 
@@ -21,6 +21,8 @@ ans = 101
 
 for k in range(1, 101):
     next_grid = [[1 for _ in range(m)] for _ in range(n)]
+    visited = [[False for _ in range(m)] for _ in range(n)]
+
     area = 0
     
     for x in range(n):
@@ -30,9 +32,9 @@ for k in range(1, 101):
 
     for x in range(n):
         for y in range(m):
-            if next_grid[x][y]:
+            if can_go(x, y):
                 area += 1
-                next_grid[x][y] = 0
+                visited[x][y] = True
                 dfs(x, y)
 
     if max_area < area:
