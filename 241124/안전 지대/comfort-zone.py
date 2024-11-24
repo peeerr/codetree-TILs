@@ -19,7 +19,7 @@ grid = [list(map(int, input().split())) for _ in range(n)]
 max_area = 0
 ans = 101
 
-for k in range(101):
+for k in range(1, 101):
     next_grid = [[1 for _ in range(m)] for _ in range(n)]
     area = 0
     
@@ -37,5 +37,7 @@ for k in range(101):
     if max_area < area:
         max_area = area
         ans = k
+    elif max_area == area:
+        ans = min(ans, k)
 
-print(max_area, ans)
+print(ans, max_area)
