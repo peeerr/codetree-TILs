@@ -1,10 +1,13 @@
+from collections import deque
+
+
 def can_go(x, y):
     return 0 <= x < n and 0 <= y < m and grid[x][y] and not visited[x][y]
 
 
 def bfs(x, y):
     dxs, dys = [-1, 1, 0, 0], [0, 0, -1, 1]
-    q = [(x, y)]
+    q = deque([(x, y)])
 
     while q:
         x, y = q.popleft()
@@ -13,7 +16,7 @@ def bfs(x, y):
             nx, ny = x + dx, y + dy
 
             if can_go(nx, ny):
-                visited[nx][ny] = True
+                visited[nx][ny] = 1
                 q.append((nx, ny))
 
 
