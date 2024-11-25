@@ -31,7 +31,7 @@ def bfs(num):
                     if nx < max_x:
                         max_x, max_y = nx, ny
                     elif nx == max_x:
-                        if ny < max_x:
+                        if ny < max_y:
                             max_x, max_y = nx, ny
 
     return max_x, max_y
