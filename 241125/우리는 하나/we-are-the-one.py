@@ -43,7 +43,8 @@ for pos in combinations(positions, k):
     for x, y in pos:
         q = deque([(x, y)])
         visited[x][y] = True
-        bfs()
+    
+    bfs()
 
     ans = max(ans, cnt)
 
