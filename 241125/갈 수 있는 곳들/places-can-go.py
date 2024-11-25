@@ -6,7 +6,6 @@ def can_go(x, y):
 
 
 def bfs(x, y):
-    global ans
     dxs, dys = [-1, 1, 0, 0], [0, 0, -1, 1]
 
     q = deque([(x, y)])
@@ -18,7 +17,6 @@ def bfs(x, y):
             nx, ny = x + dx, y + dy 
 
             if can_go(nx, ny):
-                ans += 1
                 visited[nx][ny] = True
                 q.append((nx, ny))
 
@@ -28,9 +26,9 @@ grid = [list(map(int, input().split())) for _ in range(n)]
 positions = [tuple(map(lambda x : int(x) - 1, input().split())) for _ in range(k)]
 
 visited = [[False for _ in range(n)] for _ in range(n)]
-ans = 0
 
 for x, y in positions:
+    visited[x][y] = True
     bfs(x, y)
 
-print(ans)
+print(sum([1 for y in range(n) for x in range(n) if visited[x][y]]))
