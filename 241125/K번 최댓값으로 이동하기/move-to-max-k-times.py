@@ -22,16 +22,10 @@ def bfs(num):
                 is_go = True
                 visited[nx][ny] = True
                 q.append((nx, ny))
-
-                if grid[nx][ny] > max_num:
+                
+                if (grid[nx][ny], -nx, -ny) > (max_num, -max_x, -max_y):
                     max_num = grid[nx][ny]
                     max_x, max_y = nx, ny
-                elif grid[nx][ny] == max_num:
-                    if nx < max_x:
-                        max_x, max_y = nx, ny
-                    elif nx == max_x:
-                        if ny < max_y:
-                            max_x, max_y = nx, ny
 
     return max_x, max_y
 
