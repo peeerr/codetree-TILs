@@ -41,8 +41,6 @@ n, k = map(int, input().split())
 grid = [list(map(int, input().split())) for _ in range(n)]
 x, y = map(lambda x : int(x) - 1, input().split())
 
-ans_x, ans_y = 0, 0
-
 for _ in range(k):
     visited = [[False for _ in range(n)] for _ in range(n)]
     q = deque([(x, y)])
@@ -52,9 +50,8 @@ for _ in range(k):
     max_x, max_y = bfs(grid[x][y])
 
     if is_go:
-        ans_x, ans_y = max_x, max_y
         x, y = max_x, max_y
     else:
         break
 
-print(ans_x + 1, ans_y + 1)
+print(x + 1, y + 1)
