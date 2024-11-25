@@ -7,7 +7,6 @@ def can_go(x, y, num):
 
 def bfs(num):
     global is_go
-    visited[q[0][0]][q[0][1]] = True
 
     dxs, dys = [-1, 1, 0, 0], [0, 0, -1, 1]
     max_num = 0
