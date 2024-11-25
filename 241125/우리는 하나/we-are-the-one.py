@@ -38,10 +38,11 @@ ans = 0
 
 for pos in combinations(positions, k):
     visited = [[False for _ in range(n)] for _ in range(n)]
+    q = deque()
     cnt = k
 
     for x, y in pos:
-        q = deque([(x, y)])
+        q.append((x, y))
         visited[x][y] = True
     
     bfs()
