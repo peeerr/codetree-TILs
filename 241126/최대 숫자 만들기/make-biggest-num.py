@@ -15,7 +15,7 @@ def compare(a, b):
         elif int(str(a) + str(b)) < int(str(b) + str(a)):
             return 1
         else:
-            0
+            return 0
 
 
 n = int(input())
