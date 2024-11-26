@@ -4,8 +4,8 @@ import sys
 n = int(input())
 arr = list(map(int, input().split()))
 
-ans = 0
-temp = -sys.maxsize
+ans = -sys.maxsize
+temp = 0
 
 for x in arr:    
     if temp < 0:
