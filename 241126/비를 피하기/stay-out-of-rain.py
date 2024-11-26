@@ -30,6 +30,7 @@ visited = [[False for _ in range(n)] for _ in range(n)]
 q = deque()
 
 for x, y in positions:
+    visited[x][y] = True
     q.append((x, y))    
 
 bfs()
