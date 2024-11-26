@@ -2,20 +2,12 @@ from functools import cmp_to_key
 
 
 def compare(a, b):
-    if len(str(a)) == len(str(b)):
-        if a > b:
-            return -1
-        elif a < b:
-            return 1
-        else:
-            return 0
+    if str(a) + str(b) > str(b) + str(a):
+        return -1
+    elif str(a) + str(b) < str(b) + str(a):
+        return 1
     else:
-        if int(str(a) + str(b)) > int(str(b) + str(a)):
-            return -1
-        elif int(str(a) + str(b)) < int(str(b) + str(a)):
-            return 1
-        else:
-            return 0
+        return 0
 
 
 n = int(input())
