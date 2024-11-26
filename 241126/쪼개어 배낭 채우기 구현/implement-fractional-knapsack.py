@@ -26,4 +26,7 @@ while weight != m:
         weight += w * split_jewel
         ans += v * split_jewel
 
+    if not pq:
+        break
+
 print(f"{ans:.3f}")
