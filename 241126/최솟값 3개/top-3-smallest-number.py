@@ -11,4 +11,10 @@ for num in nums:
     if len(pq) < 3:
         print(-1)
     else:
-        print(pq[0] * pq[1] * pq[2])
+        n1 = heapq.heappop(pq)
+        n2 = heapq.heappop(pq)
+        n3 = heapq.heappop(pq)
+        print(n1 * n2 * n3)
+        heapq.heappush(pq, n1)
+        heapq.heappush(pq, n2)
+        heapq.heappush(pq, n3)
