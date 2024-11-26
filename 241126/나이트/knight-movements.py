@@ -31,6 +31,8 @@ q = deque([(start_x, start_y)])
 visited[start_x][start_y] = True
 
 bfs()
-ans = step[end_x][end_y]
 
-print(ans if ans else -1)
+if visited[end_x][end_y]:
+    print(step[end_x][end_y])
+else:
+    print(-1)
