@@ -18,6 +18,9 @@ def bfs():
                 step[nx][ny] = step[x][y] + 1
                 visited[nx][ny] = True
                 q.append((nx, ny))
+            
+                if grid[nx][ny] == 3:
+                    return
 
 
 n, h, m = map(int, input().split())
