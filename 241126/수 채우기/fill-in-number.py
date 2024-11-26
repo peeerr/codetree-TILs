@@ -20,4 +20,4 @@ while n > 0:
             n -= 2
             ans += 1
 
-print(ans)
+print(ans if n == 0 else -1)
