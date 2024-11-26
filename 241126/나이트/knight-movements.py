@@ -21,7 +21,6 @@ def bfs():
 
 
 n = int(input())
-grid = [[0 for _ in range(n)] for _ in range(n)]
 start_x, start_y, end_x, end_y = map(lambda x : int(x) - 1, input().split())
 
 step = [[0 for _ in range(n)] for _ in range(n)]
