@@ -8,7 +8,7 @@ def compare(a, b):
         elif a < b:
             return 1
         else:
-            0
+            return 0
     else:
         if int(str(a) + str(b)) > int(str(b) + str(a)):
             return -1
