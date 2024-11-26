@@ -18,33 +18,31 @@ def bfs():
                 step[nx][ny] = step[x][y] + 1
                 visited[nx][ny] = True
                 q.append((nx, ny))
-            
-                if grid[nx][ny] == 3:
-                    return
-
+        
 
 n, h, m = map(int, input().split())
 grid = [list(map(int, input().split())) for _ in range(n)] 
 
-ans = [[0 for _ in range(n)] for _ in range(n)]
-positions = [(x, y) for x in range(n) for y in range(n) if grid[x][y] == 2]
+positions = [(x, y) for x in range(n) for y in range(n) if grid[x][y] == 3]
+step = [[0 for _ in range(n)] for _ in range(n)]
+
+visited = [[False for _ in range(n)] for _ in range(n)]
+q = deque()
 
 for x, y in positions:
-    step = [[0 for _ in range(n)] for _ in range(n)]
-    visited = [[False for _ in range(n)] for _ in range(n)]
-    
-    q = deque([(x, y)])
-    visited[x][y] = True
-    bfs()
+    q.append((x, y))    
 
-    min_dist = n * n
-    for i in range(n):
-        for j in range(n):
-            if grid[i][j] == 3 and visited[i][j] and step[i][j] < min_dist:
-                min_dist = step[i][j]
-                ans[x][y] = min_dist
+bfs()
 
-    ans[x][y] = -1 if not ans[x][y] else ans[x][y]
+ans = [[0 for _ in range(n)] for _ in range(n)]
+
+for x in range(n):
+    for y in range(n):
+        if grid[x][y] == 2:
+            if step[x][y]:
+                ans[x][y] = step[x][y]
+            else:
+                ans[x][y] = -1
 
 for i in range(n):
     print(*ans[i])
