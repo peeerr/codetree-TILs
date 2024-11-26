@@ -1,23 +1,11 @@
-import sys
-
+MAX_NUM = 100000
 
 n = int(input())
+ans = MAX_NUM
 
-if n == 1:
-    print(-1)
-    sys.exit()
+for i in range(MAX_NUM):
+    remainder = n - 5 * i
+    if remainder >= 0 and remainder % 2 == 0:
+        ans = min(ans, remainder // 2 + i)
 
-ans = 0
-
-while n > 0:
-    n -= 5
-    ans += 1
-
-    if n == -1 or n == 1:
-        n += 5
-        ans -= 1
-        while n != 0:
-            n -= 2
-            ans += 1
-
-print(ans if n == 0 else -1)
+print(-1 if ans == MAX_NUM else ans)
