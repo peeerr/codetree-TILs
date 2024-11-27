@@ -9,7 +9,7 @@ n, m = map(int, input().split())
 arr = [int(input()) for _ in range(n)]
 
 ans = 0
-left, right = 0, max(arr)
+left, right = 1, max(arr)
 
 while left <= right:
     mid = (left + right) // 2
