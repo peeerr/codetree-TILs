@@ -29,7 +29,7 @@ def lower_bound(target):
 
 
 n, m = map(int, input().split())
-arr = list(map(int, input().split()))
+arr = sorted(map(int, input().split()))
 targets = [tuple(map(int, input().split())) for _ in range(m)]
 
 for start, end in targets:
