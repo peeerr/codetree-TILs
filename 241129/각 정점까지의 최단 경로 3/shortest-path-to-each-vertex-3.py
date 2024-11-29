@@ -28,4 +28,7 @@ while pq:
 
 
 for i in range(2, n + 1):
-    print(dist[i])
+    if dist[i] == float(inf):
+        print(-1)
+    else:
+        print(dist[i])
