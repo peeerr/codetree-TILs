@@ -7,31 +7,36 @@ def merge_sort(low, high):
 
 
 def merge(low, mid, high):
-    merged = []
     l, r = low, mid + 1
+    k = low
 
     while l <= mid and r <= high:
         if arr[l] <= arr[r]:
-            merged.append(arr[l])
+            merged_arr[k] = arr[l]
             l += 1
+            k += 1
         else:
-            merged.append(arr[r])
+            merged_arr[k] = arr[r]
             r += 1
+            k += 1
 
     while l <= mid:
-        merged.append(arr[l])
+        merged_arr[k] = arr[l]
         l += 1
+        k += 1
 
     while r <= high:
-        merged.append(arr[r])
+        merged_arr[k] = arr[r]
         r += 1
+        k += 1
 
     for i in range(low, high + 1):
-        arr[i] = merged[i - low]
+        arr[i] = merged_arr[i]
 
 
 n = int(input())
 arr = list(map(int, input().split()))
+merged_arr = [0] * n
 
 merge_sort(0, n - 1)
 
