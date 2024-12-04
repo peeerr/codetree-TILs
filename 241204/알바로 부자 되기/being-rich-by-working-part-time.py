@@ -9,6 +9,7 @@ dp = [0 for _ in range(n + 1)]
 
 for i in range(1, n + 1):
     s1, e1, p1 = infos[i]
+    dp[i] = p1
     for j in range(i):
         s2, e2, _ = infos[j]
         if not is_overlap(s1, e1, s2, e2):
