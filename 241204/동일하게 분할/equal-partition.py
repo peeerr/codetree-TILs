@@ -7,7 +7,7 @@ dp[0] = True
 
 for x in arr:
     for i in range(m, x - 1, -1):
-        dp[i] = dp[i - x]
+        dp[i] |= dp[i - x]
 
 if dp[m] and sum(arr) != m:
     print("Yes")
