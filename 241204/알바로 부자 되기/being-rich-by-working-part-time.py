@@ -1,5 +1,5 @@
 def is_overlap(s1, e1, s2, e2):
-    return e1 == s2 or e2 == s1 or s1 <= s2 <= e1 or s1 <= e2 <= e1
+    return not (e1 < s2 or e2 < s1)
 
 
 n = int(input())
