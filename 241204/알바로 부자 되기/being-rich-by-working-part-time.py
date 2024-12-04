@@ -3,7 +3,7 @@ def is_overlap(s1, e1, s2, e2):
 
 
 n = int(input())
-infos = [(0, 0, 0)] + sorted([tuple(map(int, input().split())) for _ in range(n)], key=lambda x : x[0])
+infos = [(0, 0, 0)] + [tuple(map(int, input().split())) for _ in range(n)]
 
 dp = [0 for _ in range(n + 1)]
 
