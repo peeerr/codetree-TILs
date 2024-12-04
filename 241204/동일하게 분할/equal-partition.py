@@ -2,11 +2,11 @@ n = int(input())
 arr = list(map(int, input().split()))
 m = sum(arr) // 2
 
-dp = [0 for _ in range(m + 1)]
+dp = [False] * (m + 1) 
+dp[0] = True 
 
 for x in arr:
-    for i in range(m, -1, -1):
-        if i >= x:
-            dp[i] = min(dp[i], dp[i - x] + x)
+    for i in range(m, x - 1, -1):
+        dp[i] = dp[i - x]
 
-print('Yes' if dp[m] == m else 'No')
+print('Yes' if dp[m] else 'No')
