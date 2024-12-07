@@ -27,4 +27,4 @@ while pq:
             dist[u] = new_dist
             heapq.heappush(pq, (new_dist, u))
 
-print(max([x for x in dist if x != MAX_INT]))
+print(max(dist[1:n]))
