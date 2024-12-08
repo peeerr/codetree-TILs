@@ -17,8 +17,9 @@ for child, parent in enumerate(parents):
 x = int(input())
 visited = [False for _ in range(n)]
 visited[x] = True
-remove(x)
+tree[parents[x]] = []
 
+remove(x)
 ans = 0
 
 for i in range(n):
