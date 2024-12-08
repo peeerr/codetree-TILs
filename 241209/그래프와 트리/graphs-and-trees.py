@@ -14,19 +14,20 @@ graph = [[] for _ in range(n + 1)]
 for _ in range(m):
     u, v, = map(int, input().split())
     graph[u].append(v)
+    graph[v].append(u)
 
 visited = [False for _ in range(n + 1)]
 ans = 0
 
 for i in range(1, n + 1):
-    if visited[i] or not graph[i]:
+    if visited[i]:
         continue
 
     edge_cnt, v_cnt = 0, 1
     visited[i] = True
     dfs(i)
 
-    if v_cnt - 1 == edge_cnt:
+    if v_cnt - 1 == edge_cnt // 2:
         ans += 1
 
-print(ans + len([x for x in visited[1:] if not x]))
+print(ans)
