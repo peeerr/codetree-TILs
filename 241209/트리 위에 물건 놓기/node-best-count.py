@@ -1,5 +1,6 @@
 import sys
 
+sys.setrecursionlimit(10000)
 INT_MAX = sys.maxsize
 
 
