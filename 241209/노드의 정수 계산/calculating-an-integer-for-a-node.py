@@ -1,6 +1,6 @@
 import sys
 
-sys.setrecursionlimit(10000)
+sys.setrecursionlimit(10 ** 9)
 
 
 def dfs(node):
