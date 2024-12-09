@@ -1,3 +1,8 @@
+import sys
+
+sys.setrecursionlimit(10000)
+
+
 def dfs(node):
     for v in tree[node]:
         if not visited[v]:
