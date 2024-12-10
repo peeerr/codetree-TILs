@@ -11,6 +11,7 @@ for _ in range(m):
     graph[v].append((u, w))
     graph[u].append((v, w))
 
+visited = [False for _ in range(n + 1)]
 dist = [INT_MAX for _ in range(n + 1)]
 
 # 아무 정점에서 시작
@@ -22,9 +23,10 @@ ans = 0
 while pq:
     min_dist, min_v = heapq.heappop(pq)
 
-    if dist[min_v] != min_dist:
+    if visited[min_v]:
         continue
     
+    visited[min_v] = True
     ans += min_dist
 
     for u, w in graph[min_v]:
