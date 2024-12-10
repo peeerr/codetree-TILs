@@ -4,8 +4,6 @@ INT_MAX = 100000
 def union(x, y):
     X, Y = find(x), find(y)
     if X != Y:
-        if size[X] > size[Y]:
-            X, Y = Y, X
         uf[X] = Y
         size[Y] += size[X]
     return size[Y]
