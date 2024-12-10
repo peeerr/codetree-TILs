@@ -1,27 +1,30 @@
-def union(x, y):
-    X, Y = find(x), find(y)
-    uf[X] = Y
-
-
-def find(x):
-    if uf[x] == x:
-        return x
-    uf[x] = find(uf[x])
-    return uf[x]
+def dfs(v):
+    for u in graph[v]:
+        if not visited[u]:
+            visited[u] = True
+            ans.append(u)
+            dfs(u)
 
 
 n, m, k = map(int, input().split())
-uf = [i for i in range(n + 1)]
+graph = [[] for _ in range(n + 1)]
 
 for _ in range(m):
     u, v = map(int, input().split())
-    union(u, v)
+    graph[u].append(v)
+    graph[v].append(u)
 
 path = tuple(map(int, input().split()))
-is_possible = True
 
-for i in range(k - 1):
-    if find(path[i]) != find(path[i + 1]):
+visited = [False for _ in range(n + 1)]
+visited[1] = True
+ans = [1]
+
+dfs(1)
+
+is_possible = True
+for x in path:
+    if x not in ans:
         is_possible = False
         break
 
