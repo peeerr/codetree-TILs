@@ -6,7 +6,9 @@ ans = n + 1
 sum_val = 0
 j = 0
 for i in range(1, n + 1):
-    while j + 1 <= n and sum_val + arr[j + 1] <= k:
+    while j + 1 <= n:
+        if sum_val >= k:
+            break
         sum_val += arr[j + 1]
         j += 1
     
