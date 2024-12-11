@@ -1,6 +1,9 @@
+INT_MAX = 100000
+
+
 n = int(input())
 arr = [0] + list(map(int, input().split()))
-counting = [0 for _ in range(n + 1)]
+counting = [0 for _ in range(INT_MAX + 1)]
 
 ans, j = 0, 0
 
