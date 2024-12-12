@@ -9,17 +9,18 @@ def find_nth(x):
 
 def parametric_search():
     left, right = 1, MAX_INT
+    ans = MAX_INT
+
     while left <= right:
         mid = (left + right) // 2
-        nth = find_nth(mid)
-        if nth == n:
-            return mid
-        elif nth > n:
+        if find_nth(mid) >= n:
+            ans = min(ans, mid)
             right = mid - 1
         else:
             left = mid + 1
 
+    return ans
+
 
 n = int(input())
-
 print(parametric_search())
