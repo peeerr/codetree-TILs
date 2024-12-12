@@ -4,13 +4,13 @@ MAX_INT = sys.maxsize
 
 
 def is_possible(k):
-    lane, sum_val = 0, 0
+    lane, sum_val = 1, 0
     for x in arr:
         sum_val += x
         if sum_val > k:
             lane += 1
             sum_val = x
-    return lane < m
+    return lane <= m
 
 
 def parametric_search():
