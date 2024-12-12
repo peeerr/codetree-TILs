@@ -6,6 +6,8 @@ MAX_INT = sys.maxsize
 def is_possible(k):
     lane, sum_val = 1, 0
     for x in arr:
+        if x > k:
+            return False
         sum_val += x
         if sum_val > k:
             lane += 1
