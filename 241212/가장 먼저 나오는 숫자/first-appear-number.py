@@ -18,7 +18,7 @@ arr = list(map(int, input().split()))
 
 for x in map(int, input().split()):
     idx = lower_bound(x)
-    if arr[idx] == x and idx != n:
+    if idx != n and arr[idx] == x:
         print(idx + 1)
     else:
         print(-1)
